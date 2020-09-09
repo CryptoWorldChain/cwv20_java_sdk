@@ -15,8 +15,8 @@
 */
 package org.brewchain.sdk.contract.rlp;
 
-import org.brewchain.sdk.contract.rlp.exception.DecodeException;
 import org.brewchain.sdk.contract.rlp.util.Integers;
+import org.brewchain.sdk.contract.rlp.exception.DecodeException;
 
 import java.util.ArrayList;
 import java.util.Collection;

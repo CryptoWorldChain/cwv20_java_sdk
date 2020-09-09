@@ -30,7 +30,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static org.brewchain.sdk.contract.rlp.util.Strings.HEX;
 import static org.brewchain.sdk.contract.rlp.util.Strings.encode;
 
 /**
@@ -167,7 +166,7 @@ public final class Function implements ABIObject, Serializable {
     }
 
     public String selectorHex() {
-        return encode(selector, HEX);
+        return Strings.encode(selector, Strings.HEX);
     }
 
     public String getHashAlgorithm() {
@@ -241,7 +240,7 @@ public final class Function implements ABIObject, Serializable {
         for(int i = 0; i < SELECTOR_LEN; i++) {
             if(unitBuffer[i] != selector[i]) {
                 throw new IllegalArgumentException("given selector does not match: expected: " + this.selectorHex()
-                        + ", found: " + encode(unitBuffer, 0, SELECTOR_LEN, HEX));
+                        + ", found: " + Strings.encode(unitBuffer, 0, SELECTOR_LEN, Strings.HEX));
             }
         }
         return inputTypes.decode(abiBuffer, unitBuffer);
@@ -292,13 +291,13 @@ public final class Function implements ABIObject, Serializable {
         }
 
         StringBuilder sb = new StringBuilder("ID\t")
-                .append(encode(Arrays.copyOfRange(buffer, offset, SELECTOR_LEN), HEX))
+                .append(Strings.encode(Arrays.copyOfRange(buffer, offset, SELECTOR_LEN), Strings.HEX))
                 .append('\n');
         int idx = offset + SELECTOR_LEN;
         while(idx < length) {
             sb.append(idx >>> UnitType.LOG_2_UNIT_LENGTH_BYTES)
                     .append('\t')
-                    .append(encode(Arrays.copyOfRange(buffer, idx, idx + UnitType.UNIT_LENGTH_BYTES), HEX))
+                    .append(Strings.encode(Arrays.copyOfRange(buffer, idx, idx + UnitType.UNIT_LENGTH_BYTES), Strings.HEX))
                     .append('\n');
             idx += UnitType.UNIT_LENGTH_BYTES;
         }
@@ -318,10 +317,10 @@ public final class Function implements ABIObject, Serializable {
     }
 
     public static String hexOf(byte[] bytes) {
-        return encode(bytes, HEX);
+        return Strings.encode(bytes, Strings.HEX);
     }
 
     public static String hexOf(ByteBuffer buffer) {
-        return encode(buffer.array(), HEX);
+        return Strings.encode(buffer.array(), Strings.HEX);
     }
 }

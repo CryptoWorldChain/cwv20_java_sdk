@@ -19,10 +19,8 @@ import org.brewchain.sdk.contract.rlp.util.Integers;
 
 import java.nio.ByteBuffer;
 
-import static org.brewchain.sdk.contract.abi.util.Utils.EMPTY_BYTE_ARRAY;
-
 /**
- * The mirror image of {@link Integers}. Not compatible with the RLP specification.
+ * The mirror image of {@link org.brewchain.sdk.contract.rlp.util.Integers}. Not compatible with the RLP specification.
  *
  * Negative integers are stored in a minimal big-endian two's complement representation. Non-negative integers are
  * stored full-length. Negative one is represented by the empty byte array. Numbers are sign-extended on decode.
@@ -38,14 +36,14 @@ public final class BizarroIntegers {
 
     public static byte[] toBytes(byte val) {
         if(val == -1) {
-            return EMPTY_BYTE_ARRAY;
+            return Utils.EMPTY_BYTE_ARRAY;
         }
         return new byte[] { val };
     }
 
     public static byte[] toBytes(short val) {
         if(val == -1) {
-            return EMPTY_BYTE_ARRAY;
+            return Utils.EMPTY_BYTE_ARRAY;
         }
         int n = len(val);
         byte[] bytes = new byte[n];
@@ -55,7 +53,7 @@ public final class BizarroIntegers {
 
     public static byte[] toBytes(int val) {
         if(val == -1) {
-            return EMPTY_BYTE_ARRAY;
+            return Utils.EMPTY_BYTE_ARRAY;
         }
         int n = len(val);
         byte[] bytes = new byte[n];
@@ -65,7 +63,7 @@ public final class BizarroIntegers {
 
     public static byte[] toBytes(long val) {
         if(val == -1) {
-            return EMPTY_BYTE_ARRAY;
+            return Utils.EMPTY_BYTE_ARRAY;
         }
         int n = len(val);
         byte[] bytes = new byte[n];

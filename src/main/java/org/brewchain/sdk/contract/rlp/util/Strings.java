@@ -16,9 +16,9 @@
 package org.brewchain.sdk.contract.rlp.util;
 
 
-import java.nio.charset.Charset;
+import org.brewchain.sdk.contract.abi.util.Utils;
 
-import static org.brewchain.sdk.contract.abi.util.Utils.EMPTY_BYTE_ARRAY;
+import java.nio.charset.Charset;
 
 /**
  * Utility for encoding and decoding hexadecimal, Base64, and UTF-8-encoded {@code String}s.
@@ -59,7 +59,7 @@ public final class Strings {
 
     public static byte[] decode(String string, int encoding) {
         if(string.isEmpty()) {
-            return EMPTY_BYTE_ARRAY;
+            return Utils.EMPTY_BYTE_ARRAY;
         }
         switch (encoding) {
         case BASE_64_URL_SAFE: return java.util.Base64.getUrlDecoder().decode(string);

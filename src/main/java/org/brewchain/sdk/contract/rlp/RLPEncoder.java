@@ -15,8 +15,8 @@
 */
 package org.brewchain.sdk.contract.rlp;
 
-import org.brewchain.sdk.contract.rlp.eip778.KeyValuePair;
 import org.brewchain.sdk.contract.rlp.util.Integers;
+import org.brewchain.sdk.contract.rlp.eip778.KeyValuePair;
 
 import java.util.Arrays;
 

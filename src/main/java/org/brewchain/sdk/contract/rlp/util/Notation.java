@@ -22,7 +22,6 @@ import org.brewchain.sdk.contract.rlp.exception.UnrecoverableDecodeException;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.brewchain.sdk.contract.rlp.DataType.MIN_LONG_DATA_LEN;
 import static org.brewchain.sdk.contract.rlp.util.Strings.HEX;
 
 /**
@@ -102,8 +101,8 @@ public class Notation {
             throw exceedsContainer(leadByteIndex, end, containerEnd);
         }
         final int dataLen = (int) dataLenLong;
-        if (dataLen < MIN_LONG_DATA_LEN) {
-            throw new UnrecoverableDecodeException("long element data length must be " + MIN_LONG_DATA_LEN
+        if (dataLen < DataType.MIN_LONG_DATA_LEN) {
+            throw new UnrecoverableDecodeException("long element data length must be " + DataType.MIN_LONG_DATA_LEN
                     + " or greater; found: " + dataLen + " for element @ " + leadByteIndex);
         }
 

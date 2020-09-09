@@ -15,20 +15,17 @@
 */
 package org.brewchain.sdk.contract.rlp;
 
-import org.brewchain.sdk.contract.rlp.exception.DecodeException;
 import org.brewchain.sdk.contract.rlp.exception.RecoverableDecodeException;
-import org.brewchain.sdk.contract.rlp.exception.UnrecoverableDecodeException;
-import org.brewchain.sdk.contract.rlp.util.FloatingPoint;
 import org.brewchain.sdk.contract.rlp.util.Integers;
 import org.brewchain.sdk.contract.rlp.util.Notation;
+import org.brewchain.sdk.contract.rlp.exception.DecodeException;
+import org.brewchain.sdk.contract.rlp.exception.UnrecoverableDecodeException;
+import org.brewchain.sdk.contract.rlp.util.FloatingPoint;
 import org.brewchain.sdk.contract.rlp.util.Strings;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
-
-import static org.brewchain.sdk.contract.rlp.DataType.MIN_LONG_DATA_LEN;
-import static org.brewchain.sdk.contract.rlp.DataType.STRING_SHORT;
 
 /**
  * An immutable view of a portion of a byte array containing RLP-encoded data, starting at {@code index} (inclusive) and
@@ -69,8 +66,8 @@ public abstract class RLPItem {
                 throw exceedsContainer(index, _dataIndex, containerEnd, containerEnd == buffer.length);
             }
             _dataLength = Integers.getLong(buffer, lengthIndex, diff);
-            if(_dataLength < MIN_LONG_DATA_LEN) {
-                throw new UnrecoverableDecodeException("long element data length must be " + MIN_LONG_DATA_LEN + " or greater; found: " + _dataLength + " for element @ " + index);
+            if(_dataLength < DataType.MIN_LONG_DATA_LEN) {
+                throw new UnrecoverableDecodeException("long element data length must be " + DataType.MIN_LONG_DATA_LEN + " or greater; found: " + _dataLength + " for element @ " + index);
             }
             break;
         default: throw new RuntimeException();
@@ -81,7 +78,7 @@ public abstract class RLPItem {
         if(_endIndex > containerEnd) {
             throw exceedsContainer(index, _dataIndex, containerEnd, containerEnd == buffer.length);
         }
-        if(!lenient && _dataLength == 1 && type == STRING_SHORT && buffer[_dataIndex] >= 0x00) { // same as (data[from] & 0xFF) < 0x80
+        if(!lenient && _dataLength == 1 && type == DataType.STRING_SHORT && buffer[_dataIndex] >= 0x00) { // same as (data[from] & 0xFF) < 0x80
             throw new UnrecoverableDecodeException("invalid rlp for single byte @ " + index);
         }
 
