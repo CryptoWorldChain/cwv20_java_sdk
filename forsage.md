@@ -4,24 +4,24 @@
   -    注册(用户)
   -    激活等级(用户)
 ## 合约准备
-###[创建合约](#创建合约)
+* [创建合约](#创建合约)
 ## 合约接口执行
-###[注册](#注册)：registrationExt
-###[激活等级](#激活等级)：buyNewLevel
+* [注册](#注册)：registrationExt
+* [激活等级](#激活等级)：buyNewLevel
 ## 合约信息查询
-###[查找X3上级](#查找X3上级)：findFreeX3Referrer
-###[查找X6上级](#查找X6上级)：findFreeX6Referrer
-###[用户ID查询地址](#用户ID查询地址)：idToAddress 
-###[用户是否已注册](#用户是否已注册)：isUserExists
-###[最高等级](#最高等级)：LAST_LEVEL
-###[最大用户ID](#最大用户ID):LastUserId
-###[等级投资价格](#等级投资价格)：LevelPrice
-###[创始人](#创始人)：owner
-###[用户信息](#用户信息)：users
-###[用户是否激活X3等级](#用户是否激活X3等级)：usersActiveX3Levels
-###[用户是否激活X6等级](#用户是否激活X6等级)：usersActiveX6Levels
-###[用户X3信息](#用户X3信息)：usersX3Matrix
-###[用户X6信息](#用户X6信息)：usersX6Matrix
+* [查找X3上级](#查找X3上级)：findFreeX3Referrer
+* [查找X6上级](#查找X6上级)：findFreeX6Referrer
+* [用户ID查询地址](#用户ID查询地址)：idToAddress 
+* [用户是否已注册](#用户是否已注册)：isUserExists
+* [最高等级](#最高等级)：LAST_LEVEL
+* [最大用户ID](#最大用户ID):LastUserId
+* [等级投资价格](#等级投资价格)：LevelPrice
+* [创始人](#创始人)：owner
+* [用户信息](#用户信息)：users
+* [用户是否激活X3等级](#用户是否激活X3等级)：usersActiveX3Levels
+* [用户是否激活X6等级](#用户是否激活X6等级)：usersActiveX6Levels
+* [用户X3信息](#用户X3信息)：usersX3Matrix
+* [用户X6信息](#用户X6信息)：usersX6Matrix
     
 ### 创建合约
     
