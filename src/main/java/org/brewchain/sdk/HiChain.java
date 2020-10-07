@@ -21,6 +21,7 @@ import org.spongycastle.util.encoders.Hex;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -93,6 +94,7 @@ public final class HiChain {
         OKHttpExecutor.init();
         LocalCrypto.getInstance().sign("1111111111111111111111111111111111111111111111111111111111111111",new byte[]{1});
         log.info("初始化完成！");
+
     }
 
     /**
@@ -401,7 +403,9 @@ public final class HiChain {
         return result;
     }
 
-
+    public static void setTimeOut(long timeOut, TimeUnit timeUnit){
+        OKHttpExecutor.setTimeOut(timeOut,timeUnit);
+    }
 
     /**
      * hexString 转换为UTF-8格式的String .

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class OKHttpExecutor {
 
-    private static  final OkHttpClient client;
+    private static OkHttpClient client;
 
     static {
         Dispatcher dispatcher = new Dispatcher();
@@ -25,6 +25,16 @@ public class OKHttpExecutor {
                 .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
                 .retryOnConnectionFailure(false).build();
 
+    }
+    public static void setTimeOut(long timeOut, TimeUnit timeUnit){
+        client = new OkHttpClient().newBuilder()
+                .connectTimeout(timeOut, timeUnit)
+                .readTimeout(timeOut,timeUnit)
+                .writeTimeout(timeOut,timeUnit)
+                .dispatcher(client.dispatcher())
+                .sslSocketFactory(SSLSocketClient.getSSLSocketFactory(),(X509TrustManager)SSLSocketClient.getTrustManager()[0])
+                .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
+                .retryOnConnectionFailure(false).build();
     }
 
     public static void init(){
