@@ -403,10 +403,6 @@ public final class HiChain {
         return result;
     }
 
-    public static void setTimeOut(long timeOut, TimeUnit timeUnit){
-        OKHttpExecutor.setTimeOut(timeOut,timeUnit);
-    }
-
     /**
      * hexString 转换为UTF-8格式的String .
      * 读取交易的exdata使用

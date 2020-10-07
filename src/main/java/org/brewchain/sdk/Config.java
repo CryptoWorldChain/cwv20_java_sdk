@@ -1,8 +1,10 @@
 package org.brewchain.sdk;
 
 import org.brewchain.core.crypto.model.KeyPairs;
+import org.brewchain.sdk.https.OKHttpExecutor;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public final class Config {
     private Config(){}
@@ -59,4 +61,7 @@ public final class Config {
         Config.host = newHost;
     }
 
+    public static void setTimeOut(long timeOut, TimeUnit timeUnit){
+        OKHttpExecutor.setTimeOut(timeOut,timeUnit);
+    }
 }
