@@ -14,7 +14,7 @@ public class KeyPairs {
 		super();
 		this.pubkey = pubkey;
 		this.prikey = prikey;
-		this.address = address;
+		this.address = "CVN"+address;
 		this.bcuid = bcuid;
 	}
 

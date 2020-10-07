@@ -6,8 +6,11 @@ import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.Digest;
 import org.spongycastle.crypto.digests.RIPEMD160Digest;
 import org.spongycastle.jcajce.provider.digest.SHA3;
+import org.spongycastle.pqc.math.linearalgebra.ByteUtils;
 import org.spongycastle.util.encoders.Hex;
 
+import java.awt.*;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
@@ -194,5 +197,38 @@ public class HashUtil {
 
     public static String shortHash(byte[] hash) {
         return Hex.toHexString(hash).substring(0, 6);
+    }
+
+    public static void main(String[] args) {
+//        //sha256( sha256(index + "address") + address )
+//        //sha256( sha256(1 + "0") + "0" )
+//        String hash = new String(Hex.encode(HashUtil.sha256(ByteUtils.concatenate(
+//                HashUtil.sha256(ByteUtils.concatenate(
+//                        BigInteger.valueOf(1).toByteArray(),
+//                        BigInteger.valueOf(0).toByteArray())),
+//                BigInteger.valueOf(0).toByteArray()))));
+//
+//        System.out.println("hash="+hash);
+//       // keccak256(uint256(0) . keccak256(uint256(0) . uint256(1))) + 1:
+//        String hash2= new String(Hex.encode(HashUtil.sha3(ByteUtils.concatenate(
+//                BigInteger.valueOf(0).toByteArray(),
+//                HashUtil.sha3(
+//                        ByteUtils.concatenate(BigInteger.valueOf(0).toByteArray(),
+//                        BigInteger.valueOf(1).toByteArray())
+//                )
+//        ))));
+//        System.out.println("hash2="+hash2);
+//        String hash2= new String(Hex.encode(HashUtil.sha3(
+//                Hex.decode("0000000000000000000000000000000000000000000000000000000000000000"+
+//                        new String(Hex.encode(HashUtil.sha3(Hex.decode(
+//                                "0000000000000000000000000000000000000000000000000000000000000000"+
+//                                        "0000000000000000000000000000000000000000000000000000000000000001")
+//                        ))
+//                        )
+//                ))));
+//
+//        System.out.println("hash2="+hash2);
+
+
     }
 }

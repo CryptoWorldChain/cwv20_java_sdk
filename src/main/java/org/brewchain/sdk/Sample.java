@@ -7,10 +7,7 @@ import org.brewchain.core.crypto.model.KeyPairs;
 import org.brewchain.sdk.chain.NonceKeeper;
 import org.brewchain.sdk.contract.abi.Function;
 import org.brewchain.sdk.model.TransferInfo;
-import org.brewchain.sdk.util.ContractUtil;
-import org.brewchain.sdk.util.CryptoUtil;
-import org.brewchain.sdk.util.MSwapUtil;
-import org.brewchain.sdk.util.WalletUtil;
+import org.brewchain.sdk.util.*;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -20,7 +17,7 @@ import java.util.List;
 public class Sample {
     public static void main(String[] args) {
         //主链节点地址：运行前请根据实际环境更换
-//        Config.host = "http://114.115.205.57:8000";
+        Config.host = "http://43.254.1.176:8000";
         //1 WalletUtil
         //1.1 WalletUtil.getMnemonic
         String words= WalletUtil.getMnemonic();
@@ -35,9 +32,10 @@ public class Sample {
         KeyPairs kp2 = WalletUtil.restoreFromKeyStore(ksJson,"password");
         log.info("\r 1 WalletUtil.restoreFromKeyStore  ==>\naddress:{} pubKey:{} priKey:{}",kp2.getAddress(),kp2.getPubkey(),kp2.getPrikey());
 
-        String address = "3c1ea4aa4974d92e0eabd5d024772af3762720a0";
+        String addressA = "CVN67e86d2f6c7084b99f0d305694d5259ee9e81973";
         String priKey = "79211e47216f5c13c85650fac839078ad6ae2dc074ca4bd1e7817fbdfe8f6e51";
 
+        final String address = AccountUtil.cvnFiler(addressA);
         //2 NonceKeeper
         //2.1 NonceKeeper.getNonce
         int nonce = NonceKeeper.getNonce(address);
@@ -55,7 +53,7 @@ public class Sample {
         log.info("\r 3 HiChain.getUserInfo==>\n{}",userInfo);
         //3.2 HiChain.transferTo
         List<TransferInfo> transactionOutputList = new ArrayList<TransferInfo>(){{
-            this.add(new TransferInfo("1fd525a8de1005e01936c9d0a4df7c81208a980c","10000000000000000000000000"));
+            this.add(new TransferInfo("CVN67e86d2f6c7084b99f0d305694d5259ee9e81973","100000000000000000000000"));
         }};
         TransactionImpl.TxResult resultTransfer = HiChain.transferTo(address,NonceKeeper.getNonce(address), priKey,"",transactionOutputList);
         log.info("\r 3 HiChain.transferTo return==>\n{}",resultTransfer);

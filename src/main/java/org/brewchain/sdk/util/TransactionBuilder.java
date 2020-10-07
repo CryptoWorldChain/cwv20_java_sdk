@@ -18,7 +18,7 @@ public class TransactionBuilder {
     public static String build(SendTransaction pb){
         TransactionInfo.Builder ti = TransactionInfo.newBuilder();
         TransactionBody.Builder tb = TransactionBody.newBuilder();
-        tb.setAddress(ByteString.copyFrom(CryptoUtil.hexStrToBytes(pb.getAddress())));
+        tb.setAddress(ByteString.copyFrom(CryptoUtil.hexStrToBytes(AccountUtil.cvnFiler(pb.getAddress()))));
 
         tb.setInnerCodetype(pb.getInnerCodeTypeValue());
         tb.setCodeData(pb.getCodeData());
@@ -47,7 +47,7 @@ public class TransactionBuilder {
 
         for (SendTransactionOutput output : pb.getOutputsList()) {
             TransactionOutput.Builder oTransactionOutput = TransactionOutput.newBuilder();
-            oTransactionOutput.setAddress(ByteString.copyFrom(CryptoUtil.hexStrToBytes(output.getAddress())));
+            oTransactionOutput.setAddress(ByteString.copyFrom(CryptoUtil.hexStrToBytes(AccountUtil.cvnFiler(output.getAddress()))));
             if(isNotBlank(output.getAmount())){
                 oTransactionOutput.setAmount(
                         ByteString.copyFrom(bigIntegerToBytes(new BigInteger(output.getAmount()))));

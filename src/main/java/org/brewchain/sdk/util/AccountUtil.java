@@ -64,6 +64,12 @@ public class AccountUtil {
         System.out.println(div18(ss));
         
     }
-    
-    
+
+    public static String cvnFiler(String address){
+        address = address.toLowerCase();
+        if(!address.startsWith("cvn")) {
+            return address;
+        }
+        return address.substring(3);
+    }
 }

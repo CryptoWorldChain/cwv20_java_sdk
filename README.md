@@ -8,12 +8,12 @@ Typically your application should depend on release versions of jsdk, Add the re
 <dependency>
   <groupId>io.github.cryptoworldchain</groupId>
   <artifactId>cwvj</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
 </dependency>
 ```
 #### Gradle
 ```  java
-compile ('io.github.cryptoworldchain:cwvj:2.0.0')
+compile ('io.github.cryptoworldchain:cwvj:2.1.0')
 ```
 ## Config
 ```  java
@@ -23,7 +23,7 @@ Config.host = "http://host:port";
 
 Here is the description of public parameters of blockchain:
 
-- `address ` the account of blockchain
+- `address ` the account of blockchain, and it start with "CVN" which is just an identifier of the new version blockchain, when you interact with the blockchain you can remove "CVN" by the AccountUtils.filterCVN function, however,you must remove "CVN" before you send the transaction .
 - `privateKey` the private key for address, which is used to signing the transaction ,and the signature should be verified by the The public key corresponding to the private key.
 - `nonce`  the nonce is used to distinguish transactions, like the transaction serial number. Once a tansaction finished, the account will automatically increase the nonce value; Usually, we recommend that the nonce value is managed locally, and the management class NonceKeeper is also provided.The process is as follows:
   - the process of using nonce：
