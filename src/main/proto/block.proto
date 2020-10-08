@@ -10,6 +10,14 @@ message BlockInfo {
 	int32 version = 4;
 }
 
+message BlockRet {
+	BlockInfo block = 1;
+	int32 retCode = 5;
+	string retMsg = 6;
+}
+
+
+
 message BlockHeader {
 	bytes hash = 1;
 	bytes parentHash = 2;

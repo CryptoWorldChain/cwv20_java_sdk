@@ -1,7 +1,9 @@
 package org.brewchain.sdk;
 
+import com.brewchain.sdk.model.Block;
 import com.brewchain.sdk.model.TransactionImpl;
 import com.google.gson.Gson;
+import com.googlecode.protobuf.format.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.core.crypto.model.KeyPairs;
 import org.brewchain.sdk.chain.NonceKeeper;
@@ -32,7 +34,7 @@ public class Sample {
         KeyPairs kp2 = WalletUtil.restoreFromKeyStore(ksJson,"password");
         log.info("\r 1 WalletUtil.restoreFromKeyStore  ==>\naddress:{} pubKey:{} priKey:{}",kp2.getAddress(),kp2.getPubkey(),kp2.getPrikey());
 
-        String addressA = "CVN67e86d2f6c7084b99f0d305694d5259ee9e81973";
+        String addressA = "3c1ea4aa4974d92e0eabd5d024772af3762720a0";
         String priKey = "79211e47216f5c13c85650fac839078ad6ae2dc074ca4bd1e7817fbdfe8f6e51";
 
         final String address = AccountUtil.cvnFiler(addressA);
@@ -220,6 +222,14 @@ public class Sample {
         log.info("\r 4 HiChain.getTxInfo [addLiquid] return==>\n{}",new Gson().toJson(txResultAddLiquid.getTransaction().getStatus()));
         log.info("\r 4 HiChain.contractCall [addLiquid] result==>\n{}",txResultAddLiquid.getTransaction().getStatus().getResult());
 
+
+        //10.1 HiChain.getLastedBlock
+        Block.BlockRet txResultLatestBlock = HiChain.getLastedBlock();
+        log.info("\r 10 HiChain.getLastedBlock return==>\n{}",new JsonFormat().printToString(txResultLatestBlock));
+
+        //10.2 HiChain.getBlockByHeight
+        Block.BlockRet txResultBlockHeight = HiChain.getBlockByHeight(1000);
+        log.info("\r 10 HiChain.getBlockByHeight return==>\n{}",new JsonFormat().printToString(txResultBlockHeight));
 
     }
 

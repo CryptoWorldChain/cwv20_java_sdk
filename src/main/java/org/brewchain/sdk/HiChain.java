@@ -1,13 +1,13 @@
 package org.brewchain.sdk;
 
+import com.brewchain.sdk.model.Block;
 import com.brewchain.sdk.model.TokensContract20;
 import com.brewchain.sdk.model.TransactionImpl;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.core.crypto.cwv.util.BytesHelper;
-import org.brewchain.core.crypto.model.KeyPairs;
-import org.brewchain.sdk.chain.NonceKeeper;
 import org.brewchain.sdk.https.OKHttpExecutor;
 import org.brewchain.sdk.https.PureOkHttpExecutor;
 import org.brewchain.sdk.https.RequestBuilder;
@@ -15,13 +15,15 @@ import org.brewchain.sdk.model.ChainRequest;
 import org.brewchain.sdk.model.Model.SendTransaction;
 import org.brewchain.sdk.model.Model.SendTransactionOutput;
 import org.brewchain.sdk.model.TransferInfo;
-import org.brewchain.sdk.util.*;
+import org.brewchain.sdk.util.CryptoUtil;
+import org.brewchain.sdk.util.JsonPBUtil;
+import org.brewchain.sdk.util.LocalCrypto;
+import org.brewchain.sdk.util.TransactionBuilder;
 import org.spongycastle.util.encoders.Hex;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -69,15 +71,7 @@ public final class HiChain {
      */
     public static TransactionImpl.TxResult getTxInfo(String txHash) {
         ChainRequest cr = RequestBuilder.buildGetTxInfo(txHash);
-        String txInfoS = doExecute(cr);
-        TransactionImpl.TxResult.Builder txInfoB = TransactionImpl.TxResult.newBuilder();
-        try {
-            JsonPBUtil.json2PB(txInfoS,txInfoB);
-        } catch (JsonFormat.ParseException e) {
-            txInfoB.setRetCode(-1)
-                    .setRetMsg("sdk error: chain info parse error");
-        }
-        return txInfoB.build();
+        return (TransactionImpl.TxResult) doExecute(cr,TransactionImpl.TxResult.class);
     }
 
     //凡是使用sdk都要预先做一次初始化
@@ -105,16 +99,7 @@ public final class HiChain {
         String tx = TransactionBuilder.build(st);
         log.info(tx);
         ChainRequest req = RequestBuilder.buildTransactionReq(tx);
-        String txResult =  doExecute(req);
-        TransactionImpl.TxResult.Builder txB = TransactionImpl.TxResult.newBuilder();
-        try {
-            JsonPBUtil.json2PB(txResult,txB);
-        } catch (JsonFormat.ParseException e) {
-            log.error("tx result parse error==>\n",e);
-            txB.setRetCode(-1)
-                    .setRetMsg("sdk error: tx result parse error");
-        }
-        return txB.build();
+        return (TransactionImpl.TxResult) doExecute(req,TransactionImpl.TxResult.class);
     }
 
     /**
@@ -404,6 +389,26 @@ public final class HiChain {
     }
 
     /**
+     * To get latest block info of blockchain:
+     * @return
+     */
+    public static Block.BlockRet getLastedBlock(){
+        ChainRequest cr = RequestBuilder.buildGetLastedBlock();
+        return (Block.BlockRet)doExecute(cr,Block.BlockRet.class);
+    }
+
+    /**
+     * To get block info with the exact block height:
+     * @param height the height of block
+     * @return
+     */
+    public static Block.BlockRet getBlockByHeight(long height){
+        ChainRequest cr = RequestBuilder.buildGetBlockByHeightReq(height);
+        return (Block.BlockRet)doExecute(cr,Block.BlockRet.class);
+    }
+
+
+    /**
      * hexString 转换为UTF-8格式的String .
      * 读取交易的exdata使用
      */
@@ -412,5 +417,22 @@ public final class HiChain {
     }
     public static String doExecute(ChainRequest cr){
         return OKHttpExecutor.execute(cr);
+    }
+    public static Message doExecute(ChainRequest cr, Class<? extends Message> messageClazz){
+        String ret = OKHttpExecutor.execute(cr);
+        Message.Builder msgB = null;
+        try {
+            msgB = (Message.Builder)messageClazz.getMethod("newBuilder", null).invoke(null);
+            JsonPBUtil.json2PB(ret,msgB);
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            log.error("messageClazz error:{}", e.getClass().getName());
+            msgB.setField(msgB.getDescriptorForType().findFieldByName("retCode"), -2)
+                    .setField(msgB.getDescriptorForType().findFieldByName("retMsg"), "sdk error: messageClazz error");
+        } catch (JsonFormat.ParseException e) {
+            msgB.setField(msgB.getDescriptorForType().findFieldByName("retCode"), -2)
+                    .setField(msgB.getDescriptorForType().findFieldByName("retMsg"), "sdk error: chain info parse error");
+        }
+
+        return msgB.build();
     }
 }
