@@ -1,5 +1,6 @@
 package org.brewchain.sdk;
 
+import com.brewchain.sdk.model.Account;
 import com.brewchain.sdk.model.Block;
 import com.brewchain.sdk.model.TokensContract20;
 import com.brewchain.sdk.model.TransactionImpl;
@@ -386,6 +387,22 @@ public final class HiChain {
             result = "{\"retCode\": 1,\"address\": \""+address+"\",\"nonce\": 0,\"balance\": \"0x00\",\"status\": 0}";
         }
         return result;
+    }
+
+    /**
+     * To get nonce from an address:
+     * @param address
+     * @return
+     */
+    public static long getNonce(String address){
+        ChainRequest cr = RequestBuilder.buildGetUserInfoReq(address);
+        String result = doExecute(cr);
+        if(result.indexOf("账户不存在")!=-1) {
+            return 0;
+        }
+        int fromIndex = result.indexOf("nonce\": \"")+"nonce\": \"".length();
+        String nonceS = result.substring(fromIndex,result.indexOf("\"",fromIndex));
+        return Long.parseLong(nonceS);
     }
 
     /**

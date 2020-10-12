@@ -62,7 +62,9 @@ public class MnemonicUtils {
   private static void validateMnemonic(String mnemonic) {
     if (mnemonic == null || mnemonic.trim().isEmpty())
       throw new IllegalArgumentException("Mnemonic is required to generate a seed");
-
+    if(mnemonic.split(" ").length>12) {
+      throw new IllegalArgumentException("The number of spaces must be 11");
+    }
   }
   
   private static boolean[] nextElevenBits(boolean[] bits, int i) {

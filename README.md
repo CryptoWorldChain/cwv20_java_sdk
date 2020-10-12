@@ -8,12 +8,12 @@ Typically your application should depend on release versions of jsdk, Add the re
 <dependency>
   <groupId>io.github.cryptoworldchain</groupId>
   <artifactId>cwvj</artifactId>
-  <version>2.1.0</version>
+  <version>2.1.3</version>
 </dependency>
 ```
 #### Gradle
 ```  java
-compile ('io.github.cryptoworldchain:cwvj:2.1.0')
+compile ('io.github.cryptoworldchain:cwvj:2.1.3')
 ```
 ## Config
 ```  java
