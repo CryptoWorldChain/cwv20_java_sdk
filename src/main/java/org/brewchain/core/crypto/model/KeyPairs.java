@@ -2,6 +2,7 @@ package org.brewchain.core.crypto.model;
 
 
 public class KeyPairs {
+	private static String ADDR_PRE = "CVN";
 	//公钥
 	String pubkey;
 	//私钥
@@ -12,9 +13,10 @@ public class KeyPairs {
 
 	public KeyPairs(String pubkey, String prikey, String address, String bcuid) {
 		super();
+
 		this.pubkey = pubkey;
 		this.prikey = prikey;
-		this.address = "CVN"+address;
+		this.address = ADDR_PRE==null|| ADDR_PRE==""?address:(ADDR_PRE+address);
 		this.bcuid = bcuid;
 	}
 
