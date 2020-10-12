@@ -133,14 +133,7 @@ public class JavaEncImpl{
         } 
     }
 
-
-
     public KeyPairs priKeyToKey(String privKey) {
-
-        this.priKeyToKey(privKey,null);
-    }
-
-    public KeyPairs priKeyToKey(String privKey, String addrPre) {
 
         try {
             String javaKey = hexEnc(EndianHelper.revert(Hex.decode(privKey)));
@@ -165,7 +158,7 @@ public class JavaEncImpl{
             KeyPairs kp = new KeyPairs(
                     pubkey,
                     privKey, address,
-                    nextUID(pubkey),addrPre);
+                    nextUID(pubkey));
             return kp;
         } catch (Exception e) {
             e.printStackTrace();
