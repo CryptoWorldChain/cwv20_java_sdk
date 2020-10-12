@@ -17,7 +17,7 @@ compile ('io.github.cryptoworldchain:cwvj:2.1.3')
 ```
 ## Config
 ```  java
-//the host of cwv2.0 blockchain node ，default is http://43.254.1.176:8000
+//the host of cwv2.0 blockchain node ，default is http://c0:8000
 Config.host = "http://host:port";
 ```
 

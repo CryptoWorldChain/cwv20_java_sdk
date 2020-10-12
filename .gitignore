@@ -18,3 +18,7 @@ gradlew
 gradlew.bat
 lib/
 .classpath
+forsage.md
+build.gradle
+gradle.properties
+settings.gradle
