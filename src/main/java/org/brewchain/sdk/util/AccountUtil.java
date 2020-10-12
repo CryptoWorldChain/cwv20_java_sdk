@@ -66,10 +66,14 @@ public class AccountUtil {
     }
 
     public static String cvnFiler(String address){
-        address = address.toLowerCase();
-        if(!address.startsWith("cvn")) {
-            return address;
+        if(address.contains("0x") ) {
+            if (address.indexOf("0x") > 2)
+                return address.substring(address.indexOf("0x") - 2);
+        } else {
+            if(address.length()>40) {
+                return address.substring(address.length()-40);
+            }
         }
-        return address.substring(3);
+        return address;
     }
 }
