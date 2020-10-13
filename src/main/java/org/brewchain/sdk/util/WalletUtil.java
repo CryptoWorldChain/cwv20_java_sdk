@@ -77,6 +77,23 @@ public final class WalletUtil {
         return str;
     }
 
+    /**
+     * 从私钥获取keystore
+     * @param pk
+     * @param password
+     * @return
+     */
+    public static String genKeyStoreFromPk(String pk,String password){
+        KeyPairs kp = CryptoUtil.privatekeyToAccountKey(pk);
+
+        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.crypto);
+
+        KeyStoreFile keyStoreFile = ksh.generate(kp,password);
+        String str = ksh.parseToJsonStr(keyStoreFile);
+
+        return str;
+    }
+
 
     /**
      * To restore Mnemonic Words from KeyStore content with correct password.
