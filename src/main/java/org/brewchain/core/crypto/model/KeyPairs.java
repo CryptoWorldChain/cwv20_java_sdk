@@ -2,7 +2,7 @@ package org.brewchain.core.crypto.model;
 
 
 public class KeyPairs {
-	private static String ADDR_PRE = "CVN";
+	public static String ADDR_PRE = "CVN";
 	//公钥
 	String pubkey;
 	//私钥

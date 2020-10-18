@@ -1,10 +1,10 @@
 package org.brewchain.sdk;
 
-import com.brewchain.sdk.model.Account;
 import com.brewchain.sdk.model.Block;
 import com.brewchain.sdk.model.TokensContract20;
 import com.brewchain.sdk.model.TransactionImpl;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +24,7 @@ import org.spongycastle.util.encoders.Hex;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -63,6 +64,18 @@ public final class HiChain {
 //        log.info("HiChain.getUserRC20Info result=\n{}", result);
 
 //        log.info(ContractUtil.getContractBinCodeMSwap());
+        String codeData = "08031a14ff8a88c5c4701f4308fab0b26e58e54fd753eb8122088ac7230489e800006012";
+        try {
+            TokensContract20.ContractRC20 contractRC20 = TokensContract20.ContractRC20.newBuilder()
+                    .mergeFrom(Hex.decode(codeData)).build();
+            String st = new String(Hex.encode(contractRC20.getTos(0).toByteArray()));
+            log.info(st);
+            String stV = new String(Hex.encode(contractRC20.getValues(0).toByteArray()));
+            BigDecimal b = BytesHelper.hexStr2BigDecimal(stV,18,8);
+            log.info(b.toPlainString());
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -97,7 +110,13 @@ public final class HiChain {
      */
     public static TransactionImpl.TxResult doTransaction(SendTransaction st){
 //        SendTransaction stt = st.toBuilder().setNonce( NonceKeeper.getNonce(st.getAddress())).build();
-        String tx = TransactionBuilder.build(st);
+        return sendTx(TransactionBuilder.build(st));
+    }
+
+    /**
+     * 向主链发交易 0普通账户,1=多重签名账户，2=20合约账户，3=721合约账户,4=CVM合约,5=JSVM合约(可并行)
+     */
+    public static TransactionImpl.TxResult sendTx(String tx){
         log.info(tx);
         ChainRequest req = RequestBuilder.buildTransactionReq(tx);
         return (TransactionImpl.TxResult) doExecute(req,TransactionImpl.TxResult.class);
@@ -112,8 +131,12 @@ public final class HiChain {
      * @param tos 接收者集合{toAddr:接收地址,amount:金额}
      * @return
      */
-
     public static TransactionImpl.TxResult transferTo(String fromAddr,int nonce, String fromPriKey, String exData,
+                                                      List<TransferInfo> tos) {
+        //发交易请求
+        return sendTx(getTransferToTx(fromAddr,nonce,fromPriKey,exData,tos));
+    }
+    public static String getTransferToTx(String fromAddr,int nonce, String fromPriKey, String exData,
                                                       List<TransferInfo> tos) {
         if(tos == null || tos.isEmpty()) throw new RuntimeException("param [tos] should not be null");
         //构造交易参数
@@ -134,8 +157,9 @@ public final class HiChain {
             st.addOutputs(sto.build());
         }
         //发交易请求
-        return doTransaction(st.build());
+        return TransactionBuilder.build(st.build());
     }
+
 
     /**
      * 发布合约
@@ -146,6 +170,19 @@ public final class HiChain {
      * @return
      */
     public static TransactionImpl.TxResult contractCreate(String fromAddr,int nonce,  String fromPriKey, String codeData, String exData) {
+        //发交易请求
+        return sendTx(getContractCreateTx(fromAddr,nonce,fromPriKey,codeData,exData));
+    }
+
+    /**
+     * 发布合约
+     * @param fromAddr 账户地址
+     * @param fromPriKey 私钥
+     * @param codeData 合约编译后的二进制码
+     * @param exData 扩展信息
+     * @return
+     */
+    public static String getContractCreateTx(String fromAddr,int nonce,  String fromPriKey, String codeData, String exData) {
         if(fromAddr == null || "".equals(fromAddr)) {
             throw new IllegalArgumentException("param [fromAddr] should not be null");
         }
@@ -167,9 +204,8 @@ public final class HiChain {
         }
 
         //发交易请求
-        return doTransaction(st.build());
+        return TransactionBuilder.build(st.build());
     }
-
     /**
      * 执行合约
      * @param fromAddr 账户
@@ -180,6 +216,19 @@ public final class HiChain {
      * @return
      */
     public static TransactionImpl.TxResult contractCall(String fromAddr,int nonce, String fromPriKey, String contractAddress, String codeData, String exData) {
+        //发交易请求
+        return sendTx(getContractCallTx(fromAddr,nonce,fromPriKey,contractAddress,codeData,exData));
+    }
+    /**
+     * 执行合约
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param contractAddress 合约地址
+     * @param codeData 合约方法及参数编译后的二进制码
+     * @param exData 扩展信息
+     * @return
+     */
+    public static String getContractCallTx(String fromAddr,int nonce, String fromPriKey, String contractAddress, String codeData, String exData) {
         if(fromAddr == null || "".equals(fromAddr)) {
             throw new IllegalArgumentException("param [fromAddr] should not be null");
         }
@@ -203,7 +252,7 @@ public final class HiChain {
         }
 
         //发交易请求
-        return doTransaction(st.build());
+        return TransactionBuilder.build(st.build());
     }
 
     /**
@@ -217,6 +266,21 @@ public final class HiChain {
      * @return
      */
     public static TransactionImpl.TxResult rC20Create(String fromAddr,int nonce, String fromPriKey, String symbol, String name, List<TransferInfo> tos, String exData) {
+        //发交易请求
+        return sendTx(getRC20CreateTx(fromAddr,nonce,fromPriKey,symbol,name,tos,exData));
+    }
+
+    /**
+     *  发行RC20
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param symbol RC20标志
+     * @param name RC20名称
+     * @param tos RC20接收账户信息
+     * @param exData 扩展信息
+     * @return
+     */
+    public static String getRC20CreateTx(String fromAddr,int nonce, String fromPriKey, String symbol, String name, List<TransferInfo> tos, String exData) {
         if(fromAddr == null || "".equals(fromAddr)) {
             throw new IllegalArgumentException("param [fromAddr] should not be null");
         }
@@ -255,7 +319,7 @@ public final class HiChain {
         }
 
         //发交易请求
-        return doTransaction(st.build());
+        return TransactionBuilder.build(st.build());
     }
 
     /**
@@ -268,6 +332,20 @@ public final class HiChain {
      * @return
      */
     public static TransactionImpl.TxResult rC20Transfer(String fromAddr,int nonce, String fromPriKey, String rC20Address, List<TransferInfo> tos,String exData) {
+        //发交易请求
+        return sendTx(getRC20TransferTx(fromAddr,nonce,fromPriKey,rC20Address,tos,exData));
+    }
+
+    /**
+     * 转账RC20
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param rC20Address RC20地址
+     * @param tos RC20接收账户信息
+     * @param exData 扩展信息
+     * @return
+     */
+    public static String getRC20TransferTx(String fromAddr,int nonce, String fromPriKey, String rC20Address, List<TransferInfo> tos,String exData) {
         if(fromAddr == null || "".equals(fromAddr)) {
             throw new IllegalArgumentException("param [fromAddr] should not be null");
         }
@@ -304,7 +382,7 @@ public final class HiChain {
         st.addOutputs(to);
 
         //发交易请求
-        return doTransaction(st.build());
+        return TransactionBuilder.build(st.build());
     }
 
     /**
@@ -317,6 +395,11 @@ public final class HiChain {
      * @return
      */
     public static TransactionImpl.TxResult rC20Increase(String fromAddr,int nonce, String fromPriKey, String rC20Address, List<TransferInfo> tos ,String exData) {
+        //发交易请求
+        return sendTx(getRC20IncreaseTx(fromAddr,nonce,fromPriKey,rC20Address,tos,exData));
+    }
+
+    public static String getRC20IncreaseTx(String fromAddr,int nonce, String fromPriKey, String rC20Address, List<TransferInfo> tos ,String exData) {
         if(fromAddr == null || "".equals(fromAddr)) {
             throw new IllegalArgumentException("param [fromAddr] should not be null");
         }
@@ -351,7 +434,7 @@ public final class HiChain {
         st.addOutputs(to);
 
         //发交易请求
-        return doTransaction(st.build());
+        return TransactionBuilder.build(st.build());
     }
 
     /**
@@ -452,4 +535,6 @@ public final class HiChain {
 
         return msgB.build();
     }
+
+
 }

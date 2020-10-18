@@ -26,7 +26,7 @@ public final class RequestBuilder {
     public static ChainRequest buildGetUserRC20InfoReq(String ownerAddr,String rc20Addr){
         return new ChainRequest(
                 Config.host+"/fbs/c20/pbqvalue.do"
-                ,String.format("{\"token_address\":\"%s\",\"owner_address\":\"%s\"}", rc20Addr.startsWith("0x")?rc20Addr:rc20Addr.substring(2), ownerAddr.startsWith("0x")?ownerAddr:ownerAddr.substring(2)));
+                ,String.format("{\"token_address\":\"%s\",\"owner_address\":\"%s\"}", rc20Addr.startsWith("0x")?rc20Addr:rc20Addr.substring(2), ownerAddr.startsWith("0x")?ownerAddr.substring(2):ownerAddr));
     }
 
     public static ChainRequest buildGetBlockByHeightReq(long height){
