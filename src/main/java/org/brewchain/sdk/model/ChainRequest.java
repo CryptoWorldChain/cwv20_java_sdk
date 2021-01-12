@@ -15,6 +15,7 @@ public class ChainRequest {
     public String getUrl(){
         return url;
     }
+    public void setUrl(String _url) { this.url = _url;}
     public String getBody(){
         return body;
     }

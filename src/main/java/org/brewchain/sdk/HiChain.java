@@ -3,12 +3,15 @@ package org.brewchain.sdk;
 import com.brewchain.sdk.model.Block;
 import com.brewchain.sdk.model.TokensContract20;
 import com.brewchain.sdk.model.TransactionImpl;
+import com.brewchain.sdk.model.TransactionImpl.TxResult;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
+import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.core.crypto.cwv.util.BytesHelper;
+import org.brewchain.core.crypto.model.KeyPairs;
 import org.brewchain.sdk.https.OKHttpExecutor;
 import org.brewchain.sdk.https.PureOkHttpExecutor;
 import org.brewchain.sdk.https.RequestBuilder;
@@ -19,6 +22,7 @@ import org.brewchain.sdk.model.TransferInfo;
 import org.brewchain.sdk.util.CryptoUtil;
 import org.brewchain.sdk.util.JsonPBUtil;
 import org.brewchain.sdk.util.LocalCrypto;
+import org.brewchain.sdk.util.RegexUtil;
 import org.brewchain.sdk.util.TransactionBuilder;
 import org.spongycastle.util.encoders.Hex;
 
@@ -98,9 +102,9 @@ public final class HiChain {
 
         //初始化domain-pool,它必须先做。完成后再进行下面的操作。
         //DomainPool.getDynamicDomians();
-        PureOkHttpExecutor.init();
-        OKHttpExecutor.init();
-        LocalCrypto.getInstance().sign("1111111111111111111111111111111111111111111111111111111111111111",new byte[]{1});
+//        PureOkHttpExecutor.init();
+//        OKHttpExecutor.init();
+//        LocalCrypto.getInstance().sign("1111111111111111111111111111111111111111111111111111111111111111",new byte[]{1});
         log.info("初始化完成！");
 
     }
@@ -138,7 +142,9 @@ public final class HiChain {
     }
     public static String getTransferToTx(String fromAddr,int nonce, String fromPriKey, String exData,
                                                       List<TransferInfo> tos) {
-        if(tos == null || tos.isEmpty()) throw new RuntimeException("param [tos] should not be null");
+        if(tos == null || tos.isEmpty()) {
+            throw new RuntimeException("param [tos] should not be null");
+        }
         //构造交易参数
         SendTransaction.Builder st = SendTransaction.newBuilder();
         st.setAddress(fromAddr);
@@ -483,8 +489,8 @@ public final class HiChain {
         if(result.indexOf("账户不存在")!=-1) {
             return 0;
         }
-        int fromIndex = result.indexOf("nonce\": \"")+"nonce\": \"".length();
-        String nonceS = result.substring(fromIndex,result.indexOf("\"",fromIndex));
+        int fromIndex = result.indexOf("nonce\": ")+"nonce\": ".length();
+        String nonceS = result.substring(fromIndex,result.indexOf(",",fromIndex));
         return Long.parseLong(nonceS);
     }
 
@@ -536,5 +542,15 @@ public final class HiChain {
         return msgB.build();
     }
 
+    public static TxResult sendTx(String tx, String url) {
+        log.info(tx);
+        ChainRequest req = RequestBuilder.buildTransactionReq(tx);
+        req.setUrl(url);
+        return (TxResult)doExecute(req, TxResult.class);
+    }
+
+    public boolean validateAddress(String address){
+        String reg = KeyPairs.ADDR_PRE+"";
+    }
 
 }
