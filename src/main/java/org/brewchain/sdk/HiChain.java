@@ -68,18 +68,18 @@ public final class HiChain {
 //        log.info("HiChain.getUserRC20Info result=\n{}", result);
 
 //        log.info(ContractUtil.getContractBinCodeMSwap());
-        String codeData = "08031a14ff8a88c5c4701f4308fab0b26e58e54fd753eb8122088ac7230489e800006012";
-        try {
-            TokensContract20.ContractRC20 contractRC20 = TokensContract20.ContractRC20.newBuilder()
-                    .mergeFrom(Hex.decode(codeData)).build();
-            String st = new String(Hex.encode(contractRC20.getTos(0).toByteArray()));
-            log.info(st);
-            String stV = new String(Hex.encode(contractRC20.getValues(0).toByteArray()));
-            BigDecimal b = BytesHelper.hexStr2BigDecimal(stV,18,8);
-            log.info(b.toPlainString());
-        } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
-        }
+//        String codeData = "08031a14ff8a88c5c4701f4308fab0b26e58e54fd753eb8122088ac7230489e800006012";
+//        try {
+//            TokensContract20.ContractRC20 contractRC20 = TokensContract20.ContractRC20.newBuilder()
+//                    .mergeFrom(Hex.decode(codeData)).build();
+//            String st = new String(Hex.encode(contractRC20.getTos(0).toByteArray()));
+//            log.info(st);
+//            String stV = new String(Hex.encode(contractRC20.getValues(0).toByteArray()));
+//            BigDecimal b = BytesHelper.hexStr2BigDecimal(stV,18,8);
+//            log.info(b.toPlainString());
+//        } catch (InvalidProtocolBufferException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -549,8 +549,26 @@ public final class HiChain {
         return (TxResult)doExecute(req, TxResult.class);
     }
 
-    public boolean validateAddress(String address){
-        String reg = KeyPairs.ADDR_PRE+"";
+    /**
+     * String reg = "/^(0x)?CVN[A-Fa-f0-9]{40}/g";
+     * @param address
+     * @return
+     */
+    public static boolean validateAddress(String address){
+        String reg = "^[A-Fa-f0-9]{40}";
+        if(address.startsWith("0x") ) {
+            address = address.substring(address.indexOf("0x") + 2);
+        }
+        if(address.startsWith(KeyPairs.ADDR_PRE)) {
+            address = address.substring(address.indexOf(KeyPairs.ADDR_PRE) + KeyPairs.ADDR_PRE.length());
+        }
+        if(address.length() == 40 && Pattern.matches(reg,address)) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
+
 
 }
