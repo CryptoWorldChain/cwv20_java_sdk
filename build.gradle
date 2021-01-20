@@ -93,8 +93,10 @@ if("${platform}"=="osgi") {
 	version "${version}"
 
 	signing {
+		required { gradle.taskGraph.hasTask("uploadArchives") }
 		sign configurations.archives
 	}
+
 	repositories {
 		mavenCentral()
 		maven{
@@ -104,10 +106,10 @@ if("${platform}"=="osgi") {
 
 	dependencies {
 		testCompile group: 'junit', name: 'junit', version: '4.12'
-		testCompile 'org.projectlombok:lombok:1.18.8'
+		testCompile 'org.projectlombok:lombok:1.18.16'
 
 //		annotationProcessor 'org.projectlombok:lombok:1.18.8'
-		compileOnly 'org.projectlombok:lombok:1.18.8'
+		compileOnly 'org.projectlombok:lombok:1.18.16'
 		compile "com.madgag.spongycastle:core:1.58.0.0"
 		compile "com.madgag.spongycastle:prov:1.58.0.0"
 		compile "org.slf4j:slf4j-api:1.7.25"
@@ -131,7 +133,6 @@ if("${platform}"=="osgi") {
 			artifact = 'com.google.protobuf:protoc:3.6.1'
 		}
 	}
-
 
 	test.enabled = false
 
@@ -187,16 +188,24 @@ if("${platform}"=="osgi") {
 			}
 		}
 	}
-	task javadocJar(type: Jar) {
-		classifier = 'javadoc'
-		from javadoc
-	}
-
 	task sourcesJar(type: Jar) {
 		classifier = 'sources'
 		from sourceSets.main.allSource
 	}
+	task sourcesSources(type: Sources) {
+		classifier = 'sources'
+		from sourceSets.main.allSource
+	}
 
+	task javadocJar(type: Jar, dependsOn: javadoc) {
+		classifier = 'javadoc'
+		from 'build/docs/javadoc'
+	}
+	artifacts {
+		archives jar
+		archives javadocJar
+		archives sourcesJar
+	}
 	sourceSets {
 		main {
 			resources {
@@ -210,6 +219,7 @@ if("${platform}"=="osgi") {
 			}
 		}
 	}
+	tasks.withType(Javadoc) { //兼容中文
 
 		options.addStringOption('Xdoclint:none','-quiet')
 
@@ -226,7 +236,7 @@ if("${platform}"=="osgi") {
 		}
 
 	}
-	
+
 	tasks.withType(JavaCompile) {
 		options.encoding = "UTF-8"
 	}
