@@ -5,7 +5,7 @@ import com.brewchain.sdk.model.TransactionImpl;
 import com.google.gson.Gson;
 import com.googlecode.protobuf.format.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
-import org.brewchain.core.crypto.model.KeyPairs;
+import com.brewchain.sdk.crypto.KeyPairs;
 import org.brewchain.sdk.chain.NonceKeeper;
 import org.brewchain.sdk.contract.abi.Function;
 import org.brewchain.sdk.model.TransferInfo;
@@ -19,7 +19,7 @@ import java.util.List;
 public class Sample {
     public static void main(String[] args) {
         //主链节点地址：运行前请根据实际环境更换
-        Config.host = "http://43.254.1.176:8000";
+        Config.host = "http://114.115.217.52:8000";
         //1 WalletUtil
         //1.1 WalletUtil.getMnemonic
         String words= WalletUtil.getMnemonic();

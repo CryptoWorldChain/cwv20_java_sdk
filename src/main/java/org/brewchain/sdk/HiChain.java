@@ -11,7 +11,7 @@ import com.googlecode.protobuf.format.JsonFormat;
 import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.core.crypto.cwv.util.BytesHelper;
-import org.brewchain.core.crypto.model.KeyPairs;
+import com.brewchain.sdk.crypto.KeyPairs;
 import org.brewchain.sdk.https.OKHttpExecutor;
 import org.brewchain.sdk.https.PureOkHttpExecutor;
 import org.brewchain.sdk.https.RequestBuilder;

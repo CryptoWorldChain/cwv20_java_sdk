@@ -120,7 +120,8 @@ if("${platform}"=="osgi") {
 		compile "com.squareup.okhttp3:okhttp:3.14.2"
 //		compile 'com.google.protobuf:protobuf-java-util:3.6.1'
 
-
+//		compile ("org.fc.zippo:org.fc.zippo.oapi:4.1.0")
+		compile fileTree(dir: 'lib', include: '*.jar')
 		runtime "ch.qos.logback:logback-core:1.2.3"
 		runtime "ch.qos.logback:logback-classic:1.2.3"
 
@@ -142,19 +143,19 @@ if("${platform}"=="osgi") {
 			mavenDeployer {
 				beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-					authentication(userName: ossrhUsername, password: ossrhPassword)
-				}
-
-				snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-					authentication(userName: ossrhUsername, password: ossrhPassword)
-				}
-//				snapshotRepository(url:"http://47.240.121.134:25566/nexus/content/repositories/snapshots/"){
-//					authentication(userName: obr_usr, password: obr_pwd)
+//				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+//					authentication(userName: ossrhUsername, password: ossrhPassword)
 //				}
-//				repository(url:"http://47.240.121.134:25566/nexus/content/repositories/brewchain/"){
-//					authentication(userName: obr_usr, password: obr_pwd)
+//
+//				snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+//					authentication(userName: ossrhUsername, password: ossrhPassword)
 //				}
+				snapshotRepository(url:"http://47.240.121.134:25566/nexus/content/repositories/snapshots/"){
+					authentication(userName: obr_usr, password: obr_pwd)
+				}
+				repository(url:"http://47.240.121.134:25566/nexus/content/repositories/brewchain/"){
+					authentication(userName: obr_usr, password: obr_pwd)
+				}
 
 
 				pom.project {
@@ -192,11 +193,6 @@ if("${platform}"=="osgi") {
 		classifier = 'sources'
 		from sourceSets.main.allSource
 	}
-	task sourcesSources(type: Sources) {
-		classifier = 'sources'
-		from sourceSets.main.allSource
-	}
-
 	task javadocJar(type: Jar, dependsOn: javadoc) {
 		classifier = 'javadoc'
 		from 'build/docs/javadoc'

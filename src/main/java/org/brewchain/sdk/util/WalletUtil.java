@@ -1,10 +1,11 @@
 package org.brewchain.sdk.util;
 
+import com.brewchain.sdk.crypto.KeyPairs;
+import com.brewchain.sdk.crypto.KeyPairs;
 import com.develop.mnemonic.KeyPairUtils;
 import com.develop.mnemonic.MnemonicUtils;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreFile;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreHelper;
-import org.brewchain.core.crypto.model.KeyPairs;
 import org.spongycastle.util.encoders.Hex;
 
 
@@ -69,7 +70,7 @@ public final class WalletUtil {
         byte[] bb = KeyPairUtils.generatePrivateKey(mnemonic, KeyPairUtils.CoinTypes.CWV);
         KeyPairs kp = CryptoUtil.privatekeyToAccountKey(bb);
 
-        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.crypto);
+        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.getCrypto());
 
         KeyStoreFile keyStoreFile = ksh.generate(kp,password);
         String str = ksh.parseToJsonStr(keyStoreFile);
@@ -86,7 +87,7 @@ public final class WalletUtil {
     public static String genKeyStoreFromPk(String pk,String password){
         KeyPairs kp = CryptoUtil.privatekeyToAccountKey(pk);
 
-        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.crypto);
+        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.getCrypto());
 
         KeyStoreFile keyStoreFile = ksh.generate(kp,password);
         String str = ksh.parseToJsonStr(keyStoreFile);
@@ -102,7 +103,7 @@ public final class WalletUtil {
      * @return
      */
     public static KeyPairs restoreFromKeyStore(String ksJson,String pwd){
-        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.crypto);
+        KeyStoreHelper ksh = new KeyStoreHelper(CryptoUtil.getCrypto());
         return CryptoUtil.privatekeyToAccountKey(ksh.getKeyStore(ksJson,pwd).getPrikey());
     }
 

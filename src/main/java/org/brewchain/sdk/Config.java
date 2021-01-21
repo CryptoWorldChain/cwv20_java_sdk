@@ -1,6 +1,6 @@
 package org.brewchain.sdk;
 
-import org.brewchain.core.crypto.model.KeyPairs;
+import com.brewchain.sdk.crypto.KeyPairs;
 import org.brewchain.sdk.https.OKHttpExecutor;
 
 import java.util.Random;

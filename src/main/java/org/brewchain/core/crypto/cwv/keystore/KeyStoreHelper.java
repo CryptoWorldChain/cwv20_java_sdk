@@ -1,11 +1,11 @@
 package org.brewchain.core.crypto.cwv.keystore;
 
+import com.brewchain.sdk.crypto.ICryptoHandler;
 import com.google.gson.Gson;
-import org.brewchain.core.crypto.JavaEncImpl;
 import org.brewchain.core.crypto.cwv.keystore.KeyStore.KeyStoreValue;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreFile.CipherParams;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreFile.KeyStoreParams;
-import org.brewchain.core.crypto.model.KeyPairs;
+import com.brewchain.sdk.crypto.KeyPairs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.BufferedBlockCipher;
@@ -27,7 +27,7 @@ import java.security.SecureRandom;
 public class KeyStoreHelper {
 	private static final Logger log = LoggerFactory.getLogger(KeyStoreHelper.class);
 
-	JavaEncImpl crypto;
+	ICryptoHandler crypto;
 
 	private static final SecureRandom secureRandom = new SecureRandom();
 	private static final int SaltLength = 8;
@@ -35,7 +35,7 @@ public class KeyStoreHelper {
 	private static final int KeyLength = 256;
 	private static final int IVLength = 128;
 
-	public KeyStoreHelper(JavaEncImpl crypto) {
+	public KeyStoreHelper(ICryptoHandler crypto) {
 		this.crypto = crypto;
 	}
 
@@ -43,18 +43,18 @@ public class KeyStoreHelper {
 		// verify the pwd
 		try {
 			KeyStoreFile oKeyStoreFile = parse(keyStoreText);
-			if (!oKeyStoreFile.getPwd().equals(crypto.hexEnc(crypto.sha3Encode(pwd.getBytes())))) {
+			if (!oKeyStoreFile.getPwd().equals(crypto.bytesToHexStr(crypto.sha3(pwd.getBytes())))) {
 				log.error("pwd is wrong");
 				return null;
 			}
 
 			// get cryptoKey
 			final ParametersWithIV key = (ParametersWithIV) getAESPasswordKey(oKeyStoreFile.getPwd().toCharArray(),
-					crypto.hexDec(oKeyStoreFile.getParams().getSalt()), oKeyStoreFile.getParams().getDklen(),
+					crypto.hexStrToBytes(oKeyStoreFile.getParams().getSalt()), oKeyStoreFile.getParams().getDklen(),
 					oKeyStoreFile.getParams().getC(), oKeyStoreFile.getParams().getL());
 
 			KeyStoreValue oKeyStoreValue = KeyStoreValue.parseFrom(decrypt(
-					crypto.hexDec(oKeyStoreFile.getCipherText()), key, oKeyStoreFile.getParams().getL()));
+					crypto.hexStrToBytes(oKeyStoreFile.getCipherText()), key, oKeyStoreFile.getParams().getL()));
 			KeyPairs oKeyPairs = new KeyPairs(oKeyStoreValue.getPubkey(), oKeyStoreValue.getPrikey(),
 					oKeyStoreValue.getAddress(), oKeyStoreValue.getBcuid());
 
@@ -83,21 +83,21 @@ public class KeyStoreHelper {
 
 		byte[] salt = new byte[SaltLength];
 		secureRandom.nextBytes(salt);
-		oKeyStoreParams.setSalt(crypto.hexEnc(salt));
+		oKeyStoreParams.setSalt(crypto.bytesToHexStr(salt));
 		oKeyStoreParams.setC(IVLength);
 		oKeyStoreParams.setDklen(KeyLength);
 		oKeyStoreParams.setL(oKeyStoreValue.build().toByteArray().length);
 		oKeyStoreFile.setParams(oKeyStoreParams);
-		oKeyStoreFile.setPwd(crypto.hexEnc(crypto.sha3Encode(pwd.getBytes())));
+		oKeyStoreFile.setPwd(crypto.bytesToHexStr(crypto.sha3(pwd.getBytes())));
 		oKeyStoreFile.setCipher("cbc");
 
 		CipherParams oCipherParams = oKeyStoreFile.new CipherParams();
 		final ParametersWithIV key = (ParametersWithIV) getAESPasswordKey(oKeyStoreFile.getPwd().toCharArray(), salt);
-		oCipherParams.setIv(crypto.hexEnc(key.getIV()));
+		oCipherParams.setIv(crypto.bytesToHexStr(key.getIV()));
 		oKeyStoreFile.setCipherParams(oCipherParams);
 
 		try {
-			oKeyStoreFile.setCipherText(crypto.hexEnc(
+			oKeyStoreFile.setCipherText(crypto.bytesToHexStr(
 					encrypt(oKeyStoreValue.build().toByteArray(), oKeyStoreFile.getPwd().toCharArray(), key)));
 		} catch (IOException e) {
 			e.printStackTrace();

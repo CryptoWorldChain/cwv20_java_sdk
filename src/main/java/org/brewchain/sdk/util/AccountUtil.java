@@ -1,7 +1,7 @@
 package org.brewchain.sdk.util;
 
 import java.math.BigDecimal;
-import org.brewchain.core.crypto.model.KeyPairs;
+import com.brewchain.sdk.crypto.KeyPairs;
 
 public class AccountUtil {
     
