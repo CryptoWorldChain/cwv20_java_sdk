@@ -26,7 +26,7 @@ public class Sample {
         log.info("\r 1 WalletUtil.getMnemonic ==>\n"+words);
         //1.2 WalletUtil.getKeyPair
         //**地址前缀设置 默认为CVN ,设置其他KeyPairs.ADDR_PRE="其他"，取消前缀KeyPairs.ADDR_PRE=null
-        KeyPairs kp = WalletUtil.getKeyPair(words);
+        KeyPairs kp = CryptoUtil.getRandomKP();
         log.info("\r 1 WalletUtil.getKeyPair ==>\n address:{} pubKey:{} priKey:{}",kp.getAddress(),kp.getPubkey(),kp.getPrikey());
         //1.3 WalletUtil.genKeyStoreFromMnemonic
         String ksJson = WalletUtil.genKeyStoreFromMnemonic(words,"password");

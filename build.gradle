@@ -5,16 +5,19 @@ buildscript {
 		maven {
 			url "https://plugins.gradle.org/m2/"
 		}
-		maven {
-			url "http://git:25566/nexus/content/repositories/brewchain/"
-		}
+		maven {url "$repos_host"}
+		maven {url "$obr_host"}
 	}
 	dependencies {
+
 		classpath "onight.osgi:zpp-gradle_1.8:3.4.0"
 		classpath "gradle.plugin.com.google.protobuf:protobuf-gradle-plugin:0.8.10"
 	}
 }
 
+plugins {
+	id 'com.github.johnrengelman.shadow' version '2.0.4'
+}
 if("${platform}"=="osgi") {
 
 	apply plugin: 'zippo'
@@ -87,10 +90,13 @@ if("${platform}"=="osgi") {
 	apply plugin: 'java'
 	apply plugin: 'maven'
 	apply plugin: 'signing'
-
 	apply plugin: "com.google.protobuf"
 	group 'io.github.cryptoworldchain'
 	version "${version}"
+
+	apply plugin: 'com.github.johnrengelman.shadow'
+
+
 
 	signing {
 		required { gradle.taskGraph.hasTask("uploadArchives") }
@@ -121,7 +127,7 @@ if("${platform}"=="osgi") {
 //		compile 'com.google.protobuf:protobuf-java-util:3.6.1'
 
 //		compile ("org.fc.zippo:org.fc.zippo.oapi:4.1.0")
-		compile fileTree(dir: 'lib', include: '*.jar')
+		compile  fileTree(dir: 'lib', include: '*.jar')
 		runtime "ch.qos.logback:logback-core:1.2.3"
 		runtime "ch.qos.logback:logback-classic:1.2.3"
 
@@ -143,19 +149,19 @@ if("${platform}"=="osgi") {
 			mavenDeployer {
 				beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-//				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-//					authentication(userName: ossrhUsername, password: ossrhPassword)
-//				}
-//
-//				snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-//					authentication(userName: ossrhUsername, password: ossrhPassword)
-//				}
-				snapshotRepository(url:"http://47.240.121.134:25566/nexus/content/repositories/snapshots/"){
-					authentication(userName: obr_usr, password: obr_pwd)
+				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+					authentication(userName: ossrhUsername, password: ossrhPassword)
 				}
-				repository(url:"http://47.240.121.134:25566/nexus/content/repositories/brewchain/"){
-					authentication(userName: obr_usr, password: obr_pwd)
+
+				snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+					authentication(userName: ossrhUsername, password: ossrhPassword)
 				}
+//				snapshotRepository(url:"http://47.240.121.134:25566/nexus/content/repositories/snapshots/"){
+//					authentication(userName: obr_usr, password: obr_pwd)
+//				}
+//				repository(url:"http://47.240.121.134:25566/nexus/content/repositories/brewchain/"){
+//					authentication(userName: obr_usr, password: obr_pwd)
+//				}
 
 
 				pom.project {
@@ -236,4 +242,13 @@ if("${platform}"=="osgi") {
 	tasks.withType(JavaCompile) {
 		options.encoding = "UTF-8"
 	}
+
+
+	jar {
+
+		from {
+			configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+		}
+	}
+
 }
