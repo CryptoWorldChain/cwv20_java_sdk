@@ -465,6 +465,136 @@ public final class HiChain {
     }
 
     /**
+     *  发行RC20
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param symbol RC20标志
+     * @param name RC20名称
+     * @param tos RC20接收账户信息
+     * @param exData 扩展信息
+     * @return
+     */
+    public static TransactionImpl.TxResult rC721Create(String fromAddr,int nonce, String fromPriKey, String symbol, String name, List<TransferInfo> tos, String exData) {
+        //发交易请求
+        return sendTx(getRC721CreateTx(fromAddr,nonce,fromPriKey,symbol,name,tos,exData));
+    }
+
+    /**
+     *  发行RC20
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param symbol RC20标志
+     * @param name RC20名称
+     * @param tos RC20接收账户信息
+     * @param exData 扩展信息
+     * @return
+     */
+    public static String getRC721CreateTx(String fromAddr,int nonce, String fromPriKey, String symbol, String name, List<TransferInfo> tos, String exData) {
+        if(fromAddr == null || "".equals(fromAddr)) {
+            throw new IllegalArgumentException("param [fromAddr] should not be null");
+        }
+        if(fromPriKey == null || "".equals(fromPriKey)) {
+            throw new IllegalArgumentException("param [fromPriKey] should not be null");
+        }
+        if(tos == null || tos.isEmpty()) {
+            throw new IllegalArgumentException("param [tos] should not be empty");
+        }
+        if(symbol == null || "".equals(symbol)) {
+            throw new IllegalArgumentException("param [symbol] should not be null");
+        }
+        if(name == null || "".equals(name)) {
+            throw new IllegalArgumentException("param [name] should not be null");
+        }
+
+        TokensContract20.ContractRC20.Builder data = TokensContract20.ContractRC20.newBuilder();
+        data.setDecimals(18)
+                .setName(name)
+                .setFunction(TokensContract20.ContractRC20.Function20.CONSTRUCT_PRINTABLE)
+                .setSymbol(symbol);
+        for(TransferInfo to : tos) {
+            data
+                    .addTos(ByteString.copyFrom(BytesHelper.hexStringToBytes(to.getToAddr())))
+                    .addValues(ByteString.copyFrom(BytesHelper.hexStringToBytes(to.getAmount())));
+        }
+        SendTransaction.Builder st = SendTransaction.newBuilder();
+        st.setAddress(fromAddr)
+                .setPrivateKey(fromPriKey)
+                .setNonce(nonce)
+                .setCodeData(ByteString.copyFrom(data.build().toByteArray()))
+                .setInnerCodeType(SendTransaction.CodeType.RC20_CONTRACT)
+                .setTimestamp(System.currentTimeMillis());
+        if(exData !=null && "".equals(exData)) {
+            st.setExData(exData);
+        }
+
+        //发交易请求
+        return TransactionBuilder.build(st.build());
+    }
+
+    /**
+     * 转账RC20
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param rC20Address RC20地址
+     * @param tos RC20接收账户信息
+     * @param exData 扩展信息
+     * @return
+     */
+    public static TransactionImpl.TxResult rC721Transfer(String fromAddr,int nonce, String fromPriKey, String rC20Address, List<TransferInfo> tos,String exData) {
+        //发交易请求
+        return sendTx(getRC20TransferTx(fromAddr,nonce,fromPriKey,rC20Address,tos,exData));
+    }
+
+    /**
+     * 转账RC20
+     * @param fromAddr 账户
+     * @param fromPriKey 私钥
+     * @param rC20Address RC20地址
+     * @param tos RC20接收账户信息
+     * @param exData 扩展信息
+     * @return
+     */
+    public static String getRC721TransferTx(String fromAddr,int nonce, String fromPriKey, String rC20Address, List<TransferInfo> tos,String exData) {
+        if(fromAddr == null || "".equals(fromAddr)) {
+            throw new IllegalArgumentException("param [fromAddr] should not be null");
+        }
+        if(fromPriKey == null || "".equals(fromPriKey)) {
+            throw new IllegalArgumentException("param [fromPriKey] should not be null");
+        }
+        if(tos == null || tos.isEmpty()) {
+            throw new IllegalArgumentException("param [tos] should not be empty");
+        }
+        if(rC20Address == null || "".equals(rC20Address)) {
+            throw new IllegalArgumentException("param [symbol] should not be null");
+        }
+
+        TokensContract20.ContractRC20.Builder data = TokensContract20.ContractRC20.newBuilder();
+        data.setDecimals(18)
+                .setFunction(TokensContract20.ContractRC20.Function20.TRANSFERS);
+        for(TransferInfo to : tos) {
+            data
+                    .addTos(ByteString.copyFrom(BytesHelper.hexStringToBytes(to.getToAddr())))
+                    .addValues(ByteString.copyFrom(BytesHelper.hexStringToBytes(to.getAmount())));
+        }
+        SendTransaction.Builder st = SendTransaction.newBuilder();
+        st.setAddress(fromAddr)
+                .setPrivateKey(fromPriKey)
+                .setNonce(nonce)
+                .setCodeData(ByteString.copyFrom(data.build().toByteArray()))
+                .setInnerCodeType(SendTransaction.CodeType.RC20_CONTRACT)
+                .setTimestamp(System.currentTimeMillis());
+        if(exData !=null && "".equals(exData)) {
+            st.setExData(exData);
+        }
+        SendTransactionOutput.Builder to = SendTransactionOutput.newBuilder();
+        to.setAddress(rC20Address);
+        st.addOutputs(to);
+
+        //发交易请求
+        return TransactionBuilder.build(st.build());
+    }
+
+    /**
      * To get account info from an address:
      * @param address
      * @return

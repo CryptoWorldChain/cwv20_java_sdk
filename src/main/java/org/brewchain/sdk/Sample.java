@@ -18,6 +18,9 @@ import java.util.List;
 @Slf4j
 public class Sample {
     public static void main(String[] args) {
+        int a = 3790975+
+        3792384+
+        3792384;
         //主链节点地址：运行前请根据实际环境更换
         Config.host = "http://114.115.217.52:8000";
         //1 WalletUtil
@@ -26,6 +29,17 @@ public class Sample {
         log.info("\r 1 WalletUtil.getMnemonic ==>\n"+words);
         //1.2 WalletUtil.getKeyPair
         //**地址前缀设置 默认为CVN ,设置其他KeyPairs.ADDR_PRE="其他"，取消前缀KeyPairs.ADDR_PRE=null
+
+//        for (int i=0;i<200000;i++) {
+//            KeyPairs kp = CryptoUtil.getRandomKP();
+//           log.info("kp {} result"+i+"="+kp);
+//            String sign = CryptoUtil.bytesToHexStr(CryptoUtil.sign(kp.getPrikey(),kp.getAddress().getBytes()));
+//            boolean varify = CryptoUtil.verifySign(kp.getPubkey(),kp.getAddress().getBytes(),sign);
+//            if(!varify){
+//                log.error("error [{}] ===========================> ",i);
+//                throw new IllegalArgumentException("==========================>>>>");
+//            }
+//        }
         KeyPairs kp = CryptoUtil.getRandomKP();
         log.info("\r 1 WalletUtil.getKeyPair ==>\n address:{} pubKey:{} priKey:{}",kp.getAddress(),kp.getPubkey(),kp.getPrikey());
         //1.3 WalletUtil.genKeyStoreFromMnemonic
@@ -34,9 +48,9 @@ public class Sample {
         //1.4 WalletUtil.restoreFromKeyStore
         KeyPairs kp2 = WalletUtil.restoreFromKeyStore(ksJson,"password");
         log.info("\r 1 WalletUtil.restoreFromKeyStore  ==>\naddress:{} pubKey:{} priKey:{}",kp2.getAddress(),kp2.getPubkey(),kp2.getPrikey());
-
-        String addressA = "3c1ea4aa4974d92e0eabd5d024772af3762720a0";
-        String priKey = "79211e47216f5c13c85650fac839078ad6ae2dc074ca4bd1e7817fbdfe8f6e51";
+//fc85cd6c929847621f77bda95ea645f46df2af53 ee353e42dab6de236e0071257bddeb1402dbf56de5d003ef2c08fc976f016380
+        String addressA = "fc85cd6c929847621f77bda95ea645f46df2af53";
+        String priKey = "ee353e42dab6de236e0071257bddeb1402dbf56de5d003ef2c08fc976f016380";
 
         final String address = AccountUtil.cvnFiler(addressA);
         //2 NonceKeeper
@@ -56,9 +70,9 @@ public class Sample {
         log.info("\r 3 HiChain.getUserInfo==>\n{}",userInfo);
         //3.2 HiChain.transferTo
         List<TransferInfo> transactionOutputList = new ArrayList<TransferInfo>(){{
-            this.add(new TransferInfo("CVN67e86d2f6c7084b99f0d305694d5259ee9e81973","100000000000000000000000"));
+            this.add(new TransferInfo("124f5c8adef4a0df051e62fc3ef52c9dcee94acd","10000000000000000000000"));
         }};
-        TransactionImpl.TxResult resultTransfer = HiChain.transferTo(address,NonceKeeper.getNonce(address), priKey,"",transactionOutputList);
+        TransactionImpl.TxResult resultTransfer = HiChain.transferTo(address,NonceKeeper.refreshNonce(address), priKey,"",transactionOutputList);
         log.info("\r 3 HiChain.transferTo return==>\n{}",resultTransfer);
         try {
             Thread.sleep(3000);
@@ -67,7 +81,7 @@ public class Sample {
         }
         //3.3 HiChain.getTxInfo for HiChain.transferTo
         TransactionImpl.TxResult txResultTransfer = HiChain.getTxInfo(resultTransfer.getHash());
-        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultTransfer.getTransaction().getStatus()));
+        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultTransfer.getStatus()));
 
         //3.4 HiChain.contractCreate
         String binCode = "6080604052600060015534801561001557600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610191806100656000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633fa4f2451461005c57806364a4635c14610087578063a74c2bb6146100c8575b600080fd5b34801561006857600080fd5b5061007161011f565b6040518082815260200191505060405180910390f35b34801561009357600080fd5b506100b260048036038101908080359060200190929190505050610125565b6040518082815260200191505060405180910390f35b3480156100d457600080fd5b506100dd61013c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60015481565b600081600154016001819055506001549050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a7230582079ff7660c8107f8062425b54b0499303df4e97aa6b0c7729adee57d1eff986470029";
@@ -79,16 +93,16 @@ public class Sample {
         }
         //3.3 HiChain.getTxInfo for HiChain.contractCreate
         TransactionImpl.TxResult txResultCreate = HiChain.getTxInfo(resultCreate.getHash());
-        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultCreate.getTransaction().getStatus()));
+        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultCreate.getStatus()));
         //3.5 HiChain.contractCall
         String contractAddr = "";
-        if(txResultCreate.getTransaction().getStatus()!=null && txResultCreate.getTransaction().getStatus().getStatus().equals("0x01")){
-            contractAddr = txResultCreate.getTransaction().getStatus().getResult();
+        if(txResultCreate.getStatus()!=null && txResultCreate.getStatus().getStatus().equals("0x01")){
+            contractAddr = txResultCreate.getStatus().getResult();
         }
         String abi = "[{\"constant\": true,\"inputs\": [],\"name\": \"value\",\"outputs\": [{\"name\": \"\",\"type\": \"uint256\"}],\"payable\": false,\"stateMutability\": \"view\",\"type\": \"function\"},{\"constant\": false,\"inputs\": [{\"name\": \"inc\",\"type\": \"uint256\"}],\"name\": \"valueInc\",\"outputs\": [{\"name\": \"\",\"type\": \"uint256\"}],\"payable\": false,\"stateMutability\": \"nonpayable\",\"type\": \"function\"},{\"constant\": true,\"inputs\": [],\"name\": \"getAddr\",\"outputs\": [{\"name\": \"\",\"type\": \"address\"}],\"payable\": false,\"stateMutability\": \"view\",\"type\": \"function\"},{\"inputs\": [],\"payable\": false,\"stateMutability\": \"nonpayable\",\"type\": \"constructor\"}]";
         String functionBinCode = ContractUtil.getFunctionBinCode(abi,"valueInc",BigInteger.valueOf(1));
         TransactionImpl.TxResult resultValueInc = HiChain.contractCall(address, NonceKeeper.incrNonce(address),priKey, contractAddr, binCode, "test function valueInc");
-        log.info("\r 3 HiChain.contractCall valueInc return==>\n{}",txResultCreate.getTransaction().getStatus());
+        log.info("\r 3 HiChain.contractCall valueInc return==>\n{}",txResultCreate.getStatus());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -96,7 +110,7 @@ public class Sample {
         }
         //3.3 HiChain.getTxInfo for HiChain.contractCreate
         TransactionImpl.TxResult txResultValueInc = HiChain.getTxInfo(resultCreate.getHash());
-        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultValueInc.getTransaction().getStatus()));
+        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultValueInc.getStatus()));
 
 
         //3.6 创建TOKEN ABC
@@ -112,8 +126,8 @@ public class Sample {
         }
         //3.3，查询创建METH2交易结果
         TransactionImpl.TxResult txResultABC = HiChain.getTxInfo(resultCreate.getHash());
-        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultABC.getTransaction().getStatus()));
-        String addrABC = CryptoUtil.del0X(txResultABC.getTransaction().getStatus().getResult());
+        log.info("\r 3 HiChain.getTxInfo return==>\n{}",new Gson().toJson(txResultABC.getStatus()));
+        String addrABC = CryptoUtil.del0X(txResultABC.getStatus().getResult());
         //3.7，创建TOKEN DEF
         TransactionImpl.TxResult resultDEF = HiChain.rC20Create(address,NonceKeeper.incrNonce(address),priKey,"DEF","DEF test", rC20CreateOutputList,"publish rc20 test");
         log.info("\r 3 HiChain.rC20Create DEF return==>\n{}", resultDEF);
@@ -124,8 +138,8 @@ public class Sample {
         }
         //3.3，查询创建METH2交易结果
         TransactionImpl.TxResult txResultDEF = HiChain.getTxInfo(resultCreate.getHash());
-        log.info("\r 3 HiChain.getTxInfo rC20Create return==>\n{}",txResultDEF.getTransaction().getStatus());
-        String addrDEF = CryptoUtil.del0X(txResultABC.getTransaction().getStatus().getResult());
+        log.info("\r 3 HiChain.getTxInfo rC20Create return==>\n{}",txResultDEF.getStatus());
+        String addrDEF = CryptoUtil.del0X(txResultABC.getStatus().getResult());
 
         //3.6 创建TOKEN ABC
         List<TransferInfo> rC20TransferOutputList = new ArrayList<TransferInfo>(){{
@@ -140,7 +154,7 @@ public class Sample {
         }
         //3.3，查询创建METH2交易结果
         TransactionImpl.TxResult txResultRC20 = HiChain.getTxInfo(resultCreate.getHash());
-        log.info("\r 3 HiChain.getTxInfo rC20Transfer return==>\n{}",new Gson().toJson(txResultRC20.getTransaction().getStatus()));
+        log.info("\r 3 HiChain.getTxInfo rC20Transfer return==>\n{}",new Gson().toJson(txResultRC20.getStatus()));
 
 
         //4 合约Mswap
@@ -163,17 +177,16 @@ public class Sample {
         log.info("\r 4 HiChain.contractCreate MSwap bin_code+params_code==>\n{}",binCode);
         //4.5 发布Mswap合约
         TransactionImpl.TxResult resultMSwapCreate = HiChain.contractCreate(address,NonceKeeper.incrNonce(address),priKey,binCode,"publish MSwap contract ");
-        log.info("\r 4 HiChain.contractCreate MSwap return==>\n{}",txResultCreate.getTransaction().getStatus());
+        log.info("\r 4 HiChain.contractCreate MSwap return==>\n{}",txResultCreate.getStatus());
 
         //3.3 HiChain.getTxInfo for HiChain.contractCreate MSwap
         TransactionImpl.TxResult txResultMSwapCreate = HiChain.getTxInfo(resultMSwapCreate.getHash());
-        log.info("\r 4 HiChain.getTxInfo MSwap return==>\n{}",new Gson().toJson(txResultMSwapCreate.getTransaction().getStatus()));
-        log.info("\r 4 HiChain.contractCall [initPool] return==>\n{}",txResultCreate.getTransaction().getStatus().getResult());
+        log.info("\r 4 HiChain.getTxInfo MSwap return==>\n{}",new Gson().toJson(txResultMSwapCreate.getStatus()));
+        log.info("\r 4 HiChain.contractCall [initPool] return==>\n{}",txResultCreate.getStatus().getResult());
         String contractMSwapAddr = "";
-        if(txResultCreate.getTransaction().getStatus()!=null && txResultCreate.getTransaction().getStatus().getStatus().equals("0x01")){
-            contractMSwapAddr = txResultCreate.getTransaction().getStatus().getResult();
+        if(txResultCreate.getStatus()!=null && txResultCreate.getStatus().getStatus().equals("0x01")){
+            contractMSwapAddr = txResultCreate.getStatus().getResult();
         }
-
 
         //4.6 MSwap HiChain.contractCall initPool
         // compile function with params  ABC=10000:DEF=20000
@@ -189,8 +202,8 @@ public class Sample {
         }
         //3.3 HiChain.getTxInfo for HiChain.contractCall initPool
         TransactionImpl.TxResult txResultInitPool = HiChain.getTxInfo(resultInitPool.getHash());
-        log.info("\r 4 HiChain.getTxInfo [initPool] return==>\n{}",new Gson().toJson(txResultInitPool.getTransaction().getStatus()));
-        log.info("\r 4 HiChain.contractCall [initPool] result==>\n{}",txResultInitPool.getTransaction().getStatus().getResult());
+        log.info("\r 4 HiChain.getTxInfo [initPool] return==>\n{}",new Gson().toJson(txResultInitPool.getStatus()));
+        log.info("\r 4 HiChain.contractCall [initPool] result==>\n{}",txResultInitPool.getStatus().getResult());
         // [initPool] result==>
         // 0000000000000000000000000000000000000000000000000000000000000001
 
@@ -205,8 +218,8 @@ public class Sample {
         }
         //3.3 HiChain.getTxInfo for HiChain.contractCall swap
         TransactionImpl.TxResult txResultSwap = HiChain.getTxInfo(resultSwap.getHash());
-        log.info("\r 4 HiChain.getTxInfo [swap] return==>\n{}",new Gson().toJson(txResultSwap.getTransaction().getStatus()));
-        log.info("\r 4 HiChain.contractCall [swap] result==>\n{}",txResultSwap.getTransaction().getStatus().getResult());
+        log.info("\r 4 HiChain.getTxInfo [swap] return==>\n{}",new Gson().toJson(txResultSwap.getStatus()));
+        log.info("\r 4 HiChain.contractCall [swap] result==>\n{}",txResultSwap.getStatus().getResult());
 
 
         //5.3 调用合约 增加流动性 addLiquid
@@ -220,8 +233,8 @@ public class Sample {
         }
         //3.3 HiChain.getTxInfo for HiChain.contractCall swap
         TransactionImpl.TxResult txResultAddLiquid = HiChain.getTxInfo(resultAddLiquid.getHash());
-        log.info("\r 4 HiChain.getTxInfo [addLiquid] return==>\n{}",new Gson().toJson(txResultAddLiquid.getTransaction().getStatus()));
-        log.info("\r 4 HiChain.contractCall [addLiquid] result==>\n{}",txResultAddLiquid.getTransaction().getStatus().getResult());
+        log.info("\r 4 HiChain.getTxInfo [addLiquid] return==>\n{}",new Gson().toJson(txResultAddLiquid.getStatus()));
+        log.info("\r 4 HiChain.contractCall [addLiquid] result==>\n{}",txResultAddLiquid.getStatus().getResult());
 
 
         //10.1 HiChain.getLastedBlock

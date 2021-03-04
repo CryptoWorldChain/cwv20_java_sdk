@@ -1,7 +1,6 @@
 package org.brewchain.sdk.util;
 
 import com.brewchain.sdk.crypto.KeyPairs;
-import com.brewchain.sdk.crypto.KeyPairs;
 import com.develop.mnemonic.KeyPairUtils;
 import com.develop.mnemonic.MnemonicUtils;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreFile;

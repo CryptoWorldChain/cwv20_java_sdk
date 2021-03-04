@@ -2,6 +2,7 @@ package org.brewchain.sdk.chain;
 
 import org.brewchain.sdk.HiChain;
 import org.brewchain.sdk.https.RequestBuilder;
+import org.brewchain.sdk.util.AccountUtil;
 import org.brewchain.sdk.util.RegexUtil;
 import org.brewchain.sdk.https.OKHttpExecutor;
 import org.brewchain.sdk.model.ChainRequest;
@@ -76,7 +77,7 @@ public final class NonceKeeper {
     public static void initNonce(String address){
         int i = -1;
         nonces.put(address, new AtomicInteger(i));
-        String result = HiChain.getUserInfo(address);
+        String result = HiChain.getUserInfo(AccountUtil.cvnFiler(address));
         String nonceS = RegexUtil.getValue(nonce_pattern,result);
         i = Integer.parseInt(nonceS);
         nonces.get(address).compareAndSet(-1,i);

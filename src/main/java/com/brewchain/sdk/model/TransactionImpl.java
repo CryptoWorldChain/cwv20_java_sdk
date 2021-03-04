@@ -52,19 +52,6 @@ public final class TransactionImpl {
         getSignatureBytes();
 
     /**
-     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-     */
-    boolean hasStatus();
-    /**
-     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-     */
-    com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl getStatus();
-    /**
-     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-     */
-    com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder getStatusOrBuilder();
-
-    /**
      * <code>.com.brewchain.sdk.model.TransactionNodeImpl node = 5;</code>
      */
     boolean hasNode();
@@ -147,19 +134,6 @@ public final class TransactionImpl {
               java.lang.String s = input.readStringRequireUtf8();
 
               signature_ = s;
-              break;
-            }
-            case 34: {
-              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder subBuilder = null;
-              if (status_ != null) {
-                subBuilder = status_.toBuilder();
-              }
-              status_ = input.readMessage(com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(status_);
-                status_ = subBuilder.buildPartial();
-              }
-
               break;
             }
             case 42: {
@@ -301,27 +275,6 @@ public final class TransactionImpl {
       }
     }
 
-    public static final int STATUS_FIELD_NUMBER = 4;
-    private com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl status_;
-    /**
-     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-     */
-    public boolean hasStatus() {
-      return status_ != null;
-    }
-    /**
-     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-     */
-    public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl getStatus() {
-      return status_ == null ? com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.getDefaultInstance() : status_;
-    }
-    /**
-     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-     */
-    public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder getStatusOrBuilder() {
-      return getStatus();
-    }
-
     public static final int NODE_FIELD_NUMBER = 5;
     private com.brewchain.sdk.model.TransactionImpl.TransactionNodeImpl node_;
     /**
@@ -375,9 +328,6 @@ public final class TransactionImpl {
       if (!getSignatureBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, signature_);
       }
-      if (status_ != null) {
-        output.writeMessage(4, getStatus());
-      }
       if (node_ != null) {
         output.writeMessage(5, getNode());
       }
@@ -402,10 +352,6 @@ public final class TransactionImpl {
       }
       if (!getSignatureBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, signature_);
-      }
-      if (status_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getStatus());
       }
       if (node_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -440,11 +386,6 @@ public final class TransactionImpl {
       }
       result = result && getSignature()
           .equals(other.getSignature());
-      result = result && (hasStatus() == other.hasStatus());
-      if (hasStatus()) {
-        result = result && getStatus()
-            .equals(other.getStatus());
-      }
       result = result && (hasNode() == other.hasNode());
       if (hasNode()) {
         result = result && getNode()
@@ -471,10 +412,6 @@ public final class TransactionImpl {
       }
       hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
       hash = (53 * hash) + getSignature().hashCode();
-      if (hasStatus()) {
-        hash = (37 * hash) + STATUS_FIELD_NUMBER;
-        hash = (53 * hash) + getStatus().hashCode();
-      }
       if (hasNode()) {
         hash = (37 * hash) + NODE_FIELD_NUMBER;
         hash = (53 * hash) + getNode().hashCode();
@@ -625,12 +562,6 @@ public final class TransactionImpl {
         }
         signature_ = "";
 
-        if (statusBuilder_ == null) {
-          status_ = null;
-        } else {
-          status_ = null;
-          statusBuilder_ = null;
-        }
         if (nodeBuilder_ == null) {
           node_ = null;
         } else {
@@ -672,11 +603,6 @@ public final class TransactionImpl {
           result.body_ = bodyBuilder_.build();
         }
         result.signature_ = signature_;
-        if (statusBuilder_ == null) {
-          result.status_ = status_;
-        } else {
-          result.status_ = statusBuilder_.build();
-        }
         if (nodeBuilder_ == null) {
           result.node_ = node_;
         } else {
@@ -741,9 +667,6 @@ public final class TransactionImpl {
         if (!other.getSignature().isEmpty()) {
           signature_ = other.signature_;
           onChanged();
-        }
-        if (other.hasStatus()) {
-          mergeStatus(other.getStatus());
         }
         if (other.hasNode()) {
           mergeNode(other.getNode());
@@ -1033,123 +956,6 @@ public final class TransactionImpl {
         signature_ = value;
         onChanged();
         return this;
-      }
-
-      private com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl status_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder> statusBuilder_;
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public boolean hasStatus() {
-        return statusBuilder_ != null || status_ != null;
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl getStatus() {
-        if (statusBuilder_ == null) {
-          return status_ == null ? com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.getDefaultInstance() : status_;
-        } else {
-          return statusBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public Builder setStatus(com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl value) {
-        if (statusBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          status_ = value;
-          onChanged();
-        } else {
-          statusBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public Builder setStatus(
-          com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder builderForValue) {
-        if (statusBuilder_ == null) {
-          status_ = builderForValue.build();
-          onChanged();
-        } else {
-          statusBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public Builder mergeStatus(com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl value) {
-        if (statusBuilder_ == null) {
-          if (status_ != null) {
-            status_ =
-              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.newBuilder(status_).mergeFrom(value).buildPartial();
-          } else {
-            status_ = value;
-          }
-          onChanged();
-        } else {
-          statusBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public Builder clearStatus() {
-        if (statusBuilder_ == null) {
-          status_ = null;
-          onChanged();
-        } else {
-          status_ = null;
-          statusBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder getStatusBuilder() {
-        
-        onChanged();
-        return getStatusFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder getStatusOrBuilder() {
-        if (statusBuilder_ != null) {
-          return statusBuilder_.getMessageOrBuilder();
-        } else {
-          return status_ == null ?
-              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.getDefaultInstance() : status_;
-        }
-      }
-      /**
-       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 4;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder> 
-          getStatusFieldBuilder() {
-        if (statusBuilder_ == null) {
-          statusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder>(
-                  getStatus(),
-                  getParentForChildren(),
-                  isClean());
-          status_ = null;
-        }
-        return statusBuilder_;
       }
 
       private com.brewchain.sdk.model.TransactionImpl.TransactionNodeImpl node_ = null;
@@ -5324,6 +5130,19 @@ public final class TransactionImpl {
      * <code>.com.brewchain.sdk.model.TransactionInfoImpl transaction = 3;</code>
      */
     com.brewchain.sdk.model.TransactionImpl.TransactionInfoImplOrBuilder getTransactionOrBuilder();
+
+    /**
+     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+     */
+    com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl getStatus();
+    /**
+     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+     */
+    com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder getStatusOrBuilder();
   }
   /**
    * Protobuf type {@code com.brewchain.sdk.model.TxResult}
@@ -5395,6 +5214,19 @@ public final class TransactionImpl {
               java.lang.String s = input.readStringRequireUtf8();
 
               hash_ = s;
+              break;
+            }
+            case 42: {
+              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder subBuilder = null;
+              if (status_ != null) {
+                subBuilder = status_.toBuilder();
+              }
+              status_ = input.readMessage(com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(status_);
+                status_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -5527,6 +5359,27 @@ public final class TransactionImpl {
       return getTransaction();
     }
 
+    public static final int STATUS_FIELD_NUMBER = 5;
+    private com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl status_;
+    /**
+     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+     */
+    public boolean hasStatus() {
+      return status_ != null;
+    }
+    /**
+     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+     */
+    public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl getStatus() {
+      return status_ == null ? com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.getDefaultInstance() : status_;
+    }
+    /**
+     * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+     */
+    public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder getStatusOrBuilder() {
+      return getStatus();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5553,6 +5406,9 @@ public final class TransactionImpl {
       if (!getHashBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, hash_);
       }
+      if (status_ != null) {
+        output.writeMessage(5, getStatus());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5575,6 +5431,10 @@ public final class TransactionImpl {
       }
       if (!getHashBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, hash_);
+      }
+      if (status_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getStatus());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5603,6 +5463,11 @@ public final class TransactionImpl {
         result = result && getTransaction()
             .equals(other.getTransaction());
       }
+      result = result && (hasStatus() == other.hasStatus());
+      if (hasStatus()) {
+        result = result && getStatus()
+            .equals(other.getStatus());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5623,6 +5488,10 @@ public final class TransactionImpl {
       if (hasTransaction()) {
         hash = (37 * hash) + TRANSACTION_FIELD_NUMBER;
         hash = (53 * hash) + getTransaction().hashCode();
+      }
+      if (hasStatus()) {
+        hash = (37 * hash) + STATUS_FIELD_NUMBER;
+        hash = (53 * hash) + getStatus().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5769,6 +5638,12 @@ public final class TransactionImpl {
           transaction_ = null;
           transactionBuilder_ = null;
         }
+        if (statusBuilder_ == null) {
+          status_ = null;
+        } else {
+          status_ = null;
+          statusBuilder_ = null;
+        }
         return this;
       }
 
@@ -5802,6 +5677,11 @@ public final class TransactionImpl {
           result.transaction_ = transaction_;
         } else {
           result.transaction_ = transactionBuilder_.build();
+        }
+        if (statusBuilder_ == null) {
+          result.status_ = status_;
+        } else {
+          result.status_ = statusBuilder_.build();
         }
         onBuilt();
         return result;
@@ -5864,6 +5744,9 @@ public final class TransactionImpl {
         }
         if (other.hasTransaction()) {
           mergeTransaction(other.getTransaction());
+        }
+        if (other.hasStatus()) {
+          mergeStatus(other.getStatus());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6174,6 +6057,123 @@ public final class TransactionImpl {
         }
         return transactionBuilder_;
       }
+
+      private com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl status_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder> statusBuilder_;
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public boolean hasStatus() {
+        return statusBuilder_ != null || status_ != null;
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl getStatus() {
+        if (statusBuilder_ == null) {
+          return status_ == null ? com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.getDefaultInstance() : status_;
+        } else {
+          return statusBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public Builder setStatus(com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl value) {
+        if (statusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          status_ = value;
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public Builder setStatus(
+          com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder builderForValue) {
+        if (statusBuilder_ == null) {
+          status_ = builderForValue.build();
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public Builder mergeStatus(com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl value) {
+        if (statusBuilder_ == null) {
+          if (status_ != null) {
+            status_ =
+              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.newBuilder(status_).mergeFrom(value).buildPartial();
+          } else {
+            status_ = value;
+          }
+          onChanged();
+        } else {
+          statusBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public Builder clearStatus() {
+        if (statusBuilder_ == null) {
+          status_ = null;
+          onChanged();
+        } else {
+          status_ = null;
+          statusBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder getStatusBuilder() {
+        
+        onChanged();
+        return getStatusFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      public com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder getStatusOrBuilder() {
+        if (statusBuilder_ != null) {
+          return statusBuilder_.getMessageOrBuilder();
+        } else {
+          return status_ == null ?
+              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.getDefaultInstance() : status_;
+        }
+      }
+      /**
+       * <code>.com.brewchain.sdk.model.TransactionStatusImpl status = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder> 
+          getStatusFieldBuilder() {
+        if (statusBuilder_ == null) {
+          statusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImpl.Builder, com.brewchain.sdk.model.TransactionImpl.TransactionStatusImplOrBuilder>(
+                  getStatus(),
+                  getParentForChildren(),
+                  isClean());
+          status_ = null;
+        }
+        return statusBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6267,28 +6267,28 @@ public final class TransactionImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\026transaction_impl.proto\022\027com.brewchain." +
-      "sdk.model\"\207\002\n\023TransactionInfoImpl\022\014\n\004has" +
+      "sdk.model\"\307\001\n\023TransactionInfoImpl\022\014\n\004has" +
       "h\030\001 \001(\t\022:\n\004body\030\002 \001(\0132,.com.brewchain.sd" +
       "k.model.TransactionBodyImpl\022\021\n\tsignature" +
-      "\030\003 \001(\t\022>\n\006status\030\004 \001(\0132..com.brewchain.s" +
-      "dk.model.TransactionStatusImpl\022:\n\004node\030\005" +
-      " \001(\0132,.com.brewchain.sdk.model.Transacti" +
-      "onNodeImpl\022\027\n\017accepttimestamp\030\006 \001(\003\"\347\001\n\023" +
-      "TransactionBodyImpl\022\r\n\005nonce\030\001 \001(\005\022\017\n\007ad" +
-      "dress\030\002 \001(\t\022?\n\007outputs\030\003 \003(\0132..com.brewc" +
-      "hain.sdk.model.TransactionOutputImpl\022\016\n\006" +
-      "fee_hi\030\004 \001(\003\022\017\n\007fee_low\030\005 \001(\003\022\026\n\016inner_c" +
-      "odetype\030\006 \001(\005\022\021\n\tcode_data\030\007 \001(\t\022\020\n\010ext_" +
-      "data\030\010 \001(\t\022\021\n\ttimestamp\030\t \001(\003\"8\n\025Transac" +
-      "tionOutputImpl\022\017\n\007address\030\001 \001(\t\022\016\n\006amoun" +
-      "t\030\002 \001(\t\"3\n\023TransactionNodeImpl\022\013\n\003nid\030\001 " +
-      "\001(\t\022\017\n\007address\030\002 \001(\t\"h\n\025TransactionStatu" +
-      "sImpl\022\016\n\006status\030\001 \001(\t\022\016\n\006result\030\002 \001(\t\022\014\n" +
-      "\004hash\030\003 \001(\t\022\016\n\006height\030\004 \001(\003\022\021\n\ttimestamp" +
-      "\030\005 \001(\003\"|\n\010TxResult\022\017\n\007retCode\030\001 \001(\005\022\016\n\006r" +
-      "etMsg\030\002 \001(\t\022\014\n\004hash\030\004 \001(\t\022A\n\013transaction" +
-      "\030\003 \001(\0132,.com.brewchain.sdk.model.Transac" +
-      "tionInfoImplb\006proto3"
+      "\030\003 \001(\t\022:\n\004node\030\005 \001(\0132,.com.brewchain.sdk" +
+      ".model.TransactionNodeImpl\022\027\n\017accepttime" +
+      "stamp\030\006 \001(\003\"\347\001\n\023TransactionBodyImpl\022\r\n\005n" +
+      "once\030\001 \001(\005\022\017\n\007address\030\002 \001(\t\022?\n\007outputs\030\003" +
+      " \003(\0132..com.brewchain.sdk.model.Transacti" +
+      "onOutputImpl\022\016\n\006fee_hi\030\004 \001(\003\022\017\n\007fee_low\030" +
+      "\005 \001(\003\022\026\n\016inner_codetype\030\006 \001(\005\022\021\n\tcode_da" +
+      "ta\030\007 \001(\t\022\020\n\010ext_data\030\010 \001(\t\022\021\n\ttimestamp\030" +
+      "\t \001(\003\"8\n\025TransactionOutputImpl\022\017\n\007addres" +
+      "s\030\001 \001(\t\022\016\n\006amount\030\002 \001(\t\"3\n\023TransactionNo" +
+      "deImpl\022\013\n\003nid\030\001 \001(\t\022\017\n\007address\030\002 \001(\t\"h\n\025" +
+      "TransactionStatusImpl\022\016\n\006status\030\001 \001(\t\022\016\n" +
+      "\006result\030\002 \001(\t\022\014\n\004hash\030\003 \001(\t\022\016\n\006height\030\004 " +
+      "\001(\003\022\021\n\ttimestamp\030\005 \001(\003\"\274\001\n\010TxResult\022\017\n\007r" +
+      "etCode\030\001 \001(\005\022\016\n\006retMsg\030\002 \001(\t\022\014\n\004hash\030\004 \001" +
+      "(\t\022A\n\013transaction\030\003 \001(\0132,.com.brewchain." +
+      "sdk.model.TransactionInfoImpl\022>\n\006status\030" +
+      "\005 \001(\0132..com.brewchain.sdk.model.Transact" +
+      "ionStatusImplb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6307,7 +6307,7 @@ public final class TransactionImpl {
     internal_static_com_brewchain_sdk_model_TransactionInfoImpl_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_brewchain_sdk_model_TransactionInfoImpl_descriptor,
-        new java.lang.String[] { "Hash", "Body", "Signature", "Status", "Node", "Accepttimestamp", });
+        new java.lang.String[] { "Hash", "Body", "Signature", "Node", "Accepttimestamp", });
     internal_static_com_brewchain_sdk_model_TransactionBodyImpl_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_brewchain_sdk_model_TransactionBodyImpl_fieldAccessorTable = new
@@ -6337,7 +6337,7 @@ public final class TransactionImpl {
     internal_static_com_brewchain_sdk_model_TxResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_brewchain_sdk_model_TxResult_descriptor,
-        new java.lang.String[] { "RetCode", "RetMsg", "Hash", "Transaction", });
+        new java.lang.String[] { "RetCode", "RetMsg", "Hash", "Transaction", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

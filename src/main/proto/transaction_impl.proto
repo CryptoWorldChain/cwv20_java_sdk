@@ -7,7 +7,6 @@ message TransactionInfoImpl {
 	string hash = 1;
 	TransactionBodyImpl body = 2;
 	string signature = 3;
-	TransactionStatusImpl status = 4;
 	TransactionNodeImpl node = 5;
 	int64 accepttimestamp = 6;
 }
@@ -49,4 +48,5 @@ message TxResult {
 	string retMsg = 2;
 	string hash = 4;
 	TransactionInfoImpl transaction = 3;
+	TransactionStatusImpl status = 5;
 }

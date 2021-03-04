@@ -1,0 +1,54 @@
+syntax = "proto3";
+import "block.proto";
+import "transaction.proto";
+import "account.proto";
+
+package org.brewchain.mcore.model;
+
+enum ActionModule {
+	DAO = 0; // 账户相关
+};
+
+
+enum ActionCommand {
+	GAC = 0; // 根据地址获取账户内容 req=AccountMessage resp=RetAccountMessage
+
+}
+
+message RetGetChainKeyMessage{
+	int32 retCode = 1;
+	string retMsg = 2;
+	string chainKey = 3;//文件内容
+	string CKVersion = 4;//chainkey 版本
+}
+
+message ChainSummaryMessage {
+}
+message RetChainSummaryMessage {
+	message ChainSummaryBlock {
+		string hash = 1;
+		int64 height = 2;
+		int32 txSize = 3;
+		string time = 4;
+		string miner = 5;
+	}
+	
+	ChainSummaryBlock last = 1;
+	ChainSummaryBlock prev = 2;
+	int32 blockInterval = 3;
+	int32 txMessageQueueSize = 4;
+	int32 txConfirmQueueSize = 5;
+	double receiveTps = 6;
+	double maxReceiveTps = 7;
+	double processTps = 8;
+	double maxProcessTps = 9;
+	int64 totalCreateTx = 10;
+	int64 totalSyncTx = 11;
+	int64 totalReceiveTx = 12;
+	int64 totalProcessTx = 13;
+	int32 averageTxConfirmInterval = 14;
+	int32 maxTxConfirmInterval = 15;
+	string coinBase = 16;
+	int32 averageTxSize = 17;
+	int64 pendingTx = 18;
+}
