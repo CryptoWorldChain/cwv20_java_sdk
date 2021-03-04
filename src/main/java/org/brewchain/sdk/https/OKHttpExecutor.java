@@ -43,21 +43,25 @@ public class OKHttpExecutor {
     }
 
     public static String execute(ChainRequest cr){
+        return execute(cr,cr.getUrl());
+    }
+
+    public static String execute(ChainRequest cr, String url){
         if(cr == null){
             log.error("ChainRequest must not be null!");
             return null;
         }
         String result = "";
         Request request = new Request.Builder()
-                .url(cr.getUrl())
-                .post(RequestBody.create(MediaType.parse("application/json;charset=UTF-8")
-                        ,cr.getBody()))
-                .build();
+            .url(url)
+            .post(RequestBody.create(MediaType.parse("application/json;charset=UTF-8")
+                ,cr.getBody()))
+            .build();
 
         log.debug("\r\nrequest url -----"+
-                cr.getUrl());
+            cr.getUrl());
         log.debug("\r\nrequest body -----"+
-                cr.getBody());
+            cr.getBody());
 
         try (Response response = client.newCall(request).execute()) {
             log.debug("请求返回，URL："+request.url()+",\tbody:"+cr.getBody());
@@ -74,6 +78,5 @@ public class OKHttpExecutor {
         }
         return result;
     }
-
 
 }

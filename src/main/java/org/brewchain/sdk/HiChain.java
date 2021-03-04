@@ -3,12 +3,15 @@ package org.brewchain.sdk;
 import com.brewchain.sdk.model.Block;
 import com.brewchain.sdk.model.TokensContract20;
 import com.brewchain.sdk.model.TransactionImpl;
+import com.brewchain.sdk.model.TransactionImpl.TxResult;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
+import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.core.crypto.cwv.util.BytesHelper;
+import com.brewchain.sdk.crypto.KeyPairs;
 import org.brewchain.sdk.https.OKHttpExecutor;
 import org.brewchain.sdk.https.PureOkHttpExecutor;
 import org.brewchain.sdk.https.RequestBuilder;
@@ -19,6 +22,7 @@ import org.brewchain.sdk.model.TransferInfo;
 import org.brewchain.sdk.util.CryptoUtil;
 import org.brewchain.sdk.util.JsonPBUtil;
 import org.brewchain.sdk.util.LocalCrypto;
+import org.brewchain.sdk.util.RegexUtil;
 import org.brewchain.sdk.util.TransactionBuilder;
 import org.spongycastle.util.encoders.Hex;
 
@@ -64,18 +68,18 @@ public final class HiChain {
 //        log.info("HiChain.getUserRC20Info result=\n{}", result);
 
 //        log.info(ContractUtil.getContractBinCodeMSwap());
-        String codeData = "08031a14ff8a88c5c4701f4308fab0b26e58e54fd753eb8122088ac7230489e800006012";
-        try {
-            TokensContract20.ContractRC20 contractRC20 = TokensContract20.ContractRC20.newBuilder()
-                    .mergeFrom(Hex.decode(codeData)).build();
-            String st = new String(Hex.encode(contractRC20.getTos(0).toByteArray()));
-            log.info(st);
-            String stV = new String(Hex.encode(contractRC20.getValues(0).toByteArray()));
-            BigDecimal b = BytesHelper.hexStr2BigDecimal(stV,18,8);
-            log.info(b.toPlainString());
-        } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
-        }
+//        String codeData = "08031a14ff8a88c5c4701f4308fab0b26e58e54fd753eb8122088ac7230489e800006012";
+//        try {
+//            TokensContract20.ContractRC20 contractRC20 = TokensContract20.ContractRC20.newBuilder()
+//                    .mergeFrom(Hex.decode(codeData)).build();
+//            String st = new String(Hex.encode(contractRC20.getTos(0).toByteArray()));
+//            log.info(st);
+//            String stV = new String(Hex.encode(contractRC20.getValues(0).toByteArray()));
+//            BigDecimal b = BytesHelper.hexStr2BigDecimal(stV,18,8);
+//            log.info(b.toPlainString());
+//        } catch (InvalidProtocolBufferException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -98,9 +102,9 @@ public final class HiChain {
 
         //初始化domain-pool,它必须先做。完成后再进行下面的操作。
         //DomainPool.getDynamicDomians();
-        PureOkHttpExecutor.init();
-        OKHttpExecutor.init();
-        LocalCrypto.getInstance().sign("1111111111111111111111111111111111111111111111111111111111111111",new byte[]{1});
+//        PureOkHttpExecutor.init();
+//        OKHttpExecutor.init();
+//        LocalCrypto.getInstance().sign("1111111111111111111111111111111111111111111111111111111111111111",new byte[]{1});
         log.info("初始化完成！");
 
     }
@@ -138,7 +142,9 @@ public final class HiChain {
     }
     public static String getTransferToTx(String fromAddr,int nonce, String fromPriKey, String exData,
                                                       List<TransferInfo> tos) {
-        if(tos == null || tos.isEmpty()) throw new RuntimeException("param [tos] should not be null");
+        if(tos == null || tos.isEmpty()) {
+            throw new RuntimeException("param [tos] should not be null");
+        }
         //构造交易参数
         SendTransaction.Builder st = SendTransaction.newBuilder();
         st.setAddress(fromAddr);
@@ -483,8 +489,8 @@ public final class HiChain {
         if(result.indexOf("账户不存在")!=-1) {
             return 0;
         }
-        int fromIndex = result.indexOf("nonce\": \"")+"nonce\": \"".length();
-        String nonceS = result.substring(fromIndex,result.indexOf("\"",fromIndex));
+        int fromIndex = result.indexOf("nonce\": ")+"nonce\": ".length();
+        String nonceS = result.substring(fromIndex,result.indexOf(",",fromIndex));
         return Long.parseLong(nonceS);
     }
 
@@ -535,6 +541,34 @@ public final class HiChain {
 
         return msgB.build();
     }
+
+    public static TxResult sendTx(String tx, String url) {
+        log.info(tx);
+        ChainRequest req = RequestBuilder.buildTransactionReq(tx);
+        req.setUrl(url);
+        return (TxResult)doExecute(req, TxResult.class);
+    }
+
+    /**
+     * String reg = "/^(0x)?CVN[A-Fa-f0-9]{40}/g";
+     * @param address
+     * @return
+     */
+    public static boolean validateAddress(String address){
+        String reg = "^[A-Fa-f0-9]{40}";
+        if(address.startsWith("0x") ) {
+            address = address.substring(address.indexOf("0x") + 2);
+        }
+        if(address.startsWith(KeyPairs.ADDR_PRE)) {
+            address = address.substring(address.indexOf(KeyPairs.ADDR_PRE) + KeyPairs.ADDR_PRE.length());
+        }
+        if(address.length() == 40 && Pattern.matches(reg,address)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 }
