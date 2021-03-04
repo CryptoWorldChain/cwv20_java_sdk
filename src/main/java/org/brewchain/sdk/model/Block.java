@@ -15,47 +15,47 @@ public final class Block {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface BlockInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:org.brewchain.sdk.model.BlockInfo)
+      // @@protoc_insertion_point(interface_extends:com.chain.sdk.model.BlockInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+     * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
      */
     boolean hasHeader();
     /**
-     * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+     * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
      */
-    org.brewchain.sdk.model.Block.BlockHeader getHeader();
+    Block.BlockHeader getHeader();
     /**
-     * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+     * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
      */
-    org.brewchain.sdk.model.Block.BlockHeaderOrBuilder getHeaderOrBuilder();
+    Block.BlockHeaderOrBuilder getHeaderOrBuilder();
 
     /**
-     * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+     * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
      */
     boolean hasBody();
     /**
-     * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+     * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
      */
-    org.brewchain.sdk.model.Block.BlockBody getBody();
+    Block.BlockBody getBody();
     /**
-     * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+     * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
      */
-    org.brewchain.sdk.model.Block.BlockBodyOrBuilder getBodyOrBuilder();
+    Block.BlockBodyOrBuilder getBodyOrBuilder();
 
     /**
-     * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+     * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
      */
     boolean hasMiner();
     /**
-     * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+     * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
      */
-    org.brewchain.sdk.model.Block.BlockMiner getMiner();
+    Block.BlockMiner getMiner();
     /**
-     * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+     * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
      */
-    org.brewchain.sdk.model.Block.BlockMinerOrBuilder getMinerOrBuilder();
+    Block.BlockMinerOrBuilder getMinerOrBuilder();
 
     /**
      * <code>int32 version = 4;</code>
@@ -63,11 +63,11 @@ public final class Block {
     int getVersion();
   }
   /**
-   * Protobuf type {@code org.brewchain.sdk.model.BlockInfo}
+   * Protobuf type {@code com.chain.sdk.model.BlockInfo}
    */
   public  static final class BlockInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:org.brewchain.sdk.model.BlockInfo)
+      // @@protoc_insertion_point(message_implements:com.chain.sdk.model.BlockInfo)
       BlockInfoOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use BlockInfo.newBuilder() to construct.
@@ -103,11 +103,11 @@ public final class Block {
               done = true;
               break;
             case 10: {
-              org.brewchain.sdk.model.Block.BlockHeader.Builder subBuilder = null;
+              Block.BlockHeader.Builder subBuilder = null;
               if (header_ != null) {
                 subBuilder = header_.toBuilder();
               }
-              header_ = input.readMessage(org.brewchain.sdk.model.Block.BlockHeader.parser(), extensionRegistry);
+              header_ = input.readMessage(Block.BlockHeader.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(header_);
                 header_ = subBuilder.buildPartial();
@@ -116,11 +116,11 @@ public final class Block {
               break;
             }
             case 18: {
-              org.brewchain.sdk.model.Block.BlockBody.Builder subBuilder = null;
+              Block.BlockBody.Builder subBuilder = null;
               if (body_ != null) {
                 subBuilder = body_.toBuilder();
               }
-              body_ = input.readMessage(org.brewchain.sdk.model.Block.BlockBody.parser(), extensionRegistry);
+              body_ = input.readMessage(Block.BlockBody.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(body_);
                 body_ = subBuilder.buildPartial();
@@ -129,11 +129,11 @@ public final class Block {
               break;
             }
             case 26: {
-              org.brewchain.sdk.model.Block.BlockMiner.Builder subBuilder = null;
+              Block.BlockMiner.Builder subBuilder = null;
               if (miner_ != null) {
                 subBuilder = miner_.toBuilder();
               }
-              miner_ = input.readMessage(org.brewchain.sdk.model.Block.BlockMiner.parser(), extensionRegistry);
+              miner_ = input.readMessage(Block.BlockMiner.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(miner_);
                 miner_ = subBuilder.buildPartial();
@@ -167,77 +167,77 @@ public final class Block {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockInfo_descriptor;
+      return Block.internal_static_com_chain_sdk_model_BlockInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockInfo_fieldAccessorTable
+      return Block.internal_static_com_chain_sdk_model_BlockInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.brewchain.sdk.model.Block.BlockInfo.class, org.brewchain.sdk.model.Block.BlockInfo.Builder.class);
+              Block.BlockInfo.class, Block.BlockInfo.Builder.class);
     }
 
     public static final int HEADER_FIELD_NUMBER = 1;
-    private org.brewchain.sdk.model.Block.BlockHeader header_;
+    private Block.BlockHeader header_;
     /**
-     * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+     * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
      */
     public boolean hasHeader() {
       return header_ != null;
     }
     /**
-     * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+     * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
      */
-    public org.brewchain.sdk.model.Block.BlockHeader getHeader() {
-      return header_ == null ? org.brewchain.sdk.model.Block.BlockHeader.getDefaultInstance() : header_;
+    public Block.BlockHeader getHeader() {
+      return header_ == null ? Block.BlockHeader.getDefaultInstance() : header_;
     }
     /**
-     * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+     * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
      */
-    public org.brewchain.sdk.model.Block.BlockHeaderOrBuilder getHeaderOrBuilder() {
+    public Block.BlockHeaderOrBuilder getHeaderOrBuilder() {
       return getHeader();
     }
 
     public static final int BODY_FIELD_NUMBER = 2;
-    private org.brewchain.sdk.model.Block.BlockBody body_;
+    private Block.BlockBody body_;
     /**
-     * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+     * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
      */
     public boolean hasBody() {
       return body_ != null;
     }
     /**
-     * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+     * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
      */
-    public org.brewchain.sdk.model.Block.BlockBody getBody() {
-      return body_ == null ? org.brewchain.sdk.model.Block.BlockBody.getDefaultInstance() : body_;
+    public Block.BlockBody getBody() {
+      return body_ == null ? Block.BlockBody.getDefaultInstance() : body_;
     }
     /**
-     * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+     * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
      */
-    public org.brewchain.sdk.model.Block.BlockBodyOrBuilder getBodyOrBuilder() {
+    public Block.BlockBodyOrBuilder getBodyOrBuilder() {
       return getBody();
     }
 
     public static final int MINER_FIELD_NUMBER = 3;
-    private org.brewchain.sdk.model.Block.BlockMiner miner_;
+    private Block.BlockMiner miner_;
     /**
-     * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+     * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
      */
     public boolean hasMiner() {
       return miner_ != null;
     }
     /**
-     * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+     * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
      */
-    public org.brewchain.sdk.model.Block.BlockMiner getMiner() {
-      return miner_ == null ? org.brewchain.sdk.model.Block.BlockMiner.getDefaultInstance() : miner_;
+    public Block.BlockMiner getMiner() {
+      return miner_ == null ? Block.BlockMiner.getDefaultInstance() : miner_;
     }
     /**
-     * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+     * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
      */
-    public org.brewchain.sdk.model.Block.BlockMinerOrBuilder getMinerOrBuilder() {
+    public Block.BlockMinerOrBuilder getMinerOrBuilder() {
       return getMiner();
     }
 
@@ -311,10 +311,10 @@ public final class Block {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.brewchain.sdk.model.Block.BlockInfo)) {
+      if (!(obj instanceof Block.BlockInfo)) {
         return super.equals(obj);
       }
-      org.brewchain.sdk.model.Block.BlockInfo other = (org.brewchain.sdk.model.Block.BlockInfo) obj;
+      Block.BlockInfo other = (Block.BlockInfo) obj;
 
       boolean result = true;
       result = result && (hasHeader() == other.hasHeader());
@@ -364,69 +364,69 @@ public final class Block {
       return hash;
     }
 
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(byte[] data)
+    public static Block.BlockInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(java.io.InputStream input)
+    public static Block.BlockInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseDelimitedFrom(java.io.InputStream input)
+    public static Block.BlockInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseDelimitedFrom(
+    public static Block.BlockInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockInfo parseFrom(
+    public static Block.BlockInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -439,7 +439,7 @@ public final class Block {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.brewchain.sdk.model.Block.BlockInfo prototype) {
+    public static Builder newBuilder(Block.BlockInfo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -455,26 +455,26 @@ public final class Block {
       return builder;
     }
     /**
-     * Protobuf type {@code org.brewchain.sdk.model.BlockInfo}
+     * Protobuf type {@code com.chain.sdk.model.BlockInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:org.brewchain.sdk.model.BlockInfo)
-        org.brewchain.sdk.model.Block.BlockInfoOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.chain.sdk.model.BlockInfo)
+        Block.BlockInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockInfo_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockInfo_fieldAccessorTable
+        return Block.internal_static_com_chain_sdk_model_BlockInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.brewchain.sdk.model.Block.BlockInfo.class, org.brewchain.sdk.model.Block.BlockInfo.Builder.class);
+                Block.BlockInfo.class, Block.BlockInfo.Builder.class);
       }
 
-      // Construct using org.brewchain.sdk.model.Block.BlockInfo.newBuilder()
+      // Construct using com.chain.sdk.model.Block.BlockInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -518,17 +518,17 @@ public final class Block {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockInfo_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockInfo_descriptor;
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockInfo getDefaultInstanceForType() {
-        return org.brewchain.sdk.model.Block.BlockInfo.getDefaultInstance();
+      public Block.BlockInfo getDefaultInstanceForType() {
+        return Block.BlockInfo.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockInfo build() {
-        org.brewchain.sdk.model.Block.BlockInfo result = buildPartial();
+      public Block.BlockInfo build() {
+        Block.BlockInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -536,8 +536,8 @@ public final class Block {
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockInfo buildPartial() {
-        org.brewchain.sdk.model.Block.BlockInfo result = new org.brewchain.sdk.model.Block.BlockInfo(this);
+      public Block.BlockInfo buildPartial() {
+        Block.BlockInfo result = new Block.BlockInfo(this);
         if (headerBuilder_ == null) {
           result.header_ = header_;
         } else {
@@ -592,16 +592,16 @@ public final class Block {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.brewchain.sdk.model.Block.BlockInfo) {
-          return mergeFrom((org.brewchain.sdk.model.Block.BlockInfo)other);
+        if (other instanceof Block.BlockInfo) {
+          return mergeFrom((Block.BlockInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.brewchain.sdk.model.Block.BlockInfo other) {
-        if (other == org.brewchain.sdk.model.Block.BlockInfo.getDefaultInstance()) return this;
+      public Builder mergeFrom(Block.BlockInfo other) {
+        if (other == Block.BlockInfo.getDefaultInstance()) return this;
         if (other.hasHeader()) {
           mergeHeader(other.getHeader());
         }
@@ -629,11 +629,11 @@ public final class Block {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.brewchain.sdk.model.Block.BlockInfo parsedMessage = null;
+        Block.BlockInfo parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.brewchain.sdk.model.Block.BlockInfo) e.getUnfinishedMessage();
+          parsedMessage = (Block.BlockInfo) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -643,29 +643,29 @@ public final class Block {
         return this;
       }
 
-      private org.brewchain.sdk.model.Block.BlockHeader header_ = null;
+      private Block.BlockHeader header_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.brewchain.sdk.model.Block.BlockHeader, org.brewchain.sdk.model.Block.BlockHeader.Builder, org.brewchain.sdk.model.Block.BlockHeaderOrBuilder> headerBuilder_;
+          Block.BlockHeader, Block.BlockHeader.Builder, Block.BlockHeaderOrBuilder> headerBuilder_;
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
       public boolean hasHeader() {
         return headerBuilder_ != null || header_ != null;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockHeader getHeader() {
+      public Block.BlockHeader getHeader() {
         if (headerBuilder_ == null) {
-          return header_ == null ? org.brewchain.sdk.model.Block.BlockHeader.getDefaultInstance() : header_;
+          return header_ == null ? Block.BlockHeader.getDefaultInstance() : header_;
         } else {
           return headerBuilder_.getMessage();
         }
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
-      public Builder setHeader(org.brewchain.sdk.model.Block.BlockHeader value) {
+      public Builder setHeader(Block.BlockHeader value) {
         if (headerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -679,10 +679,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
       public Builder setHeader(
-          org.brewchain.sdk.model.Block.BlockHeader.Builder builderForValue) {
+          Block.BlockHeader.Builder builderForValue) {
         if (headerBuilder_ == null) {
           header_ = builderForValue.build();
           onChanged();
@@ -693,13 +693,13 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
-      public Builder mergeHeader(org.brewchain.sdk.model.Block.BlockHeader value) {
+      public Builder mergeHeader(Block.BlockHeader value) {
         if (headerBuilder_ == null) {
           if (header_ != null) {
             header_ =
-              org.brewchain.sdk.model.Block.BlockHeader.newBuilder(header_).mergeFrom(value).buildPartial();
+              Block.BlockHeader.newBuilder(header_).mergeFrom(value).buildPartial();
           } else {
             header_ = value;
           }
@@ -711,7 +711,7 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
       public Builder clearHeader() {
         if (headerBuilder_ == null) {
@@ -725,33 +725,33 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockHeader.Builder getHeaderBuilder() {
+      public Block.BlockHeader.Builder getHeaderBuilder() {
         
         onChanged();
         return getHeaderFieldBuilder().getBuilder();
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockHeaderOrBuilder getHeaderOrBuilder() {
+      public Block.BlockHeaderOrBuilder getHeaderOrBuilder() {
         if (headerBuilder_ != null) {
           return headerBuilder_.getMessageOrBuilder();
         } else {
           return header_ == null ?
-              org.brewchain.sdk.model.Block.BlockHeader.getDefaultInstance() : header_;
+              Block.BlockHeader.getDefaultInstance() : header_;
         }
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockHeader header = 1;</code>
+       * <code>.com.chain.sdk.model.BlockHeader header = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.brewchain.sdk.model.Block.BlockHeader, org.brewchain.sdk.model.Block.BlockHeader.Builder, org.brewchain.sdk.model.Block.BlockHeaderOrBuilder> 
+          Block.BlockHeader, Block.BlockHeader.Builder, Block.BlockHeaderOrBuilder>
           getHeaderFieldBuilder() {
         if (headerBuilder_ == null) {
           headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.brewchain.sdk.model.Block.BlockHeader, org.brewchain.sdk.model.Block.BlockHeader.Builder, org.brewchain.sdk.model.Block.BlockHeaderOrBuilder>(
+              Block.BlockHeader, Block.BlockHeader.Builder, Block.BlockHeaderOrBuilder>(
                   getHeader(),
                   getParentForChildren(),
                   isClean());
@@ -760,29 +760,29 @@ public final class Block {
         return headerBuilder_;
       }
 
-      private org.brewchain.sdk.model.Block.BlockBody body_ = null;
+      private Block.BlockBody body_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.brewchain.sdk.model.Block.BlockBody, org.brewchain.sdk.model.Block.BlockBody.Builder, org.brewchain.sdk.model.Block.BlockBodyOrBuilder> bodyBuilder_;
+          Block.BlockBody, Block.BlockBody.Builder, Block.BlockBodyOrBuilder> bodyBuilder_;
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
       public boolean hasBody() {
         return bodyBuilder_ != null || body_ != null;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockBody getBody() {
+      public Block.BlockBody getBody() {
         if (bodyBuilder_ == null) {
-          return body_ == null ? org.brewchain.sdk.model.Block.BlockBody.getDefaultInstance() : body_;
+          return body_ == null ? Block.BlockBody.getDefaultInstance() : body_;
         } else {
           return bodyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
-      public Builder setBody(org.brewchain.sdk.model.Block.BlockBody value) {
+      public Builder setBody(Block.BlockBody value) {
         if (bodyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -796,10 +796,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
       public Builder setBody(
-          org.brewchain.sdk.model.Block.BlockBody.Builder builderForValue) {
+          Block.BlockBody.Builder builderForValue) {
         if (bodyBuilder_ == null) {
           body_ = builderForValue.build();
           onChanged();
@@ -810,13 +810,13 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
-      public Builder mergeBody(org.brewchain.sdk.model.Block.BlockBody value) {
+      public Builder mergeBody(Block.BlockBody value) {
         if (bodyBuilder_ == null) {
           if (body_ != null) {
             body_ =
-              org.brewchain.sdk.model.Block.BlockBody.newBuilder(body_).mergeFrom(value).buildPartial();
+              Block.BlockBody.newBuilder(body_).mergeFrom(value).buildPartial();
           } else {
             body_ = value;
           }
@@ -828,7 +828,7 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
       public Builder clearBody() {
         if (bodyBuilder_ == null) {
@@ -842,33 +842,33 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockBody.Builder getBodyBuilder() {
+      public Block.BlockBody.Builder getBodyBuilder() {
         
         onChanged();
         return getBodyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockBodyOrBuilder getBodyOrBuilder() {
+      public Block.BlockBodyOrBuilder getBodyOrBuilder() {
         if (bodyBuilder_ != null) {
           return bodyBuilder_.getMessageOrBuilder();
         } else {
           return body_ == null ?
-              org.brewchain.sdk.model.Block.BlockBody.getDefaultInstance() : body_;
+              Block.BlockBody.getDefaultInstance() : body_;
         }
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockBody body = 2;</code>
+       * <code>.com.chain.sdk.model.BlockBody body = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.brewchain.sdk.model.Block.BlockBody, org.brewchain.sdk.model.Block.BlockBody.Builder, org.brewchain.sdk.model.Block.BlockBodyOrBuilder> 
+          Block.BlockBody, Block.BlockBody.Builder, Block.BlockBodyOrBuilder>
           getBodyFieldBuilder() {
         if (bodyBuilder_ == null) {
           bodyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.brewchain.sdk.model.Block.BlockBody, org.brewchain.sdk.model.Block.BlockBody.Builder, org.brewchain.sdk.model.Block.BlockBodyOrBuilder>(
+              Block.BlockBody, Block.BlockBody.Builder, Block.BlockBodyOrBuilder>(
                   getBody(),
                   getParentForChildren(),
                   isClean());
@@ -877,29 +877,29 @@ public final class Block {
         return bodyBuilder_;
       }
 
-      private org.brewchain.sdk.model.Block.BlockMiner miner_ = null;
+      private Block.BlockMiner miner_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.brewchain.sdk.model.Block.BlockMiner, org.brewchain.sdk.model.Block.BlockMiner.Builder, org.brewchain.sdk.model.Block.BlockMinerOrBuilder> minerBuilder_;
+          Block.BlockMiner, Block.BlockMiner.Builder, Block.BlockMinerOrBuilder> minerBuilder_;
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
       public boolean hasMiner() {
         return minerBuilder_ != null || miner_ != null;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockMiner getMiner() {
+      public Block.BlockMiner getMiner() {
         if (minerBuilder_ == null) {
-          return miner_ == null ? org.brewchain.sdk.model.Block.BlockMiner.getDefaultInstance() : miner_;
+          return miner_ == null ? Block.BlockMiner.getDefaultInstance() : miner_;
         } else {
           return minerBuilder_.getMessage();
         }
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
-      public Builder setMiner(org.brewchain.sdk.model.Block.BlockMiner value) {
+      public Builder setMiner(Block.BlockMiner value) {
         if (minerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -913,10 +913,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
       public Builder setMiner(
-          org.brewchain.sdk.model.Block.BlockMiner.Builder builderForValue) {
+          Block.BlockMiner.Builder builderForValue) {
         if (minerBuilder_ == null) {
           miner_ = builderForValue.build();
           onChanged();
@@ -927,13 +927,13 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
-      public Builder mergeMiner(org.brewchain.sdk.model.Block.BlockMiner value) {
+      public Builder mergeMiner(Block.BlockMiner value) {
         if (minerBuilder_ == null) {
           if (miner_ != null) {
             miner_ =
-              org.brewchain.sdk.model.Block.BlockMiner.newBuilder(miner_).mergeFrom(value).buildPartial();
+              Block.BlockMiner.newBuilder(miner_).mergeFrom(value).buildPartial();
           } else {
             miner_ = value;
           }
@@ -945,7 +945,7 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
       public Builder clearMiner() {
         if (minerBuilder_ == null) {
@@ -959,33 +959,33 @@ public final class Block {
         return this;
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockMiner.Builder getMinerBuilder() {
+      public Block.BlockMiner.Builder getMinerBuilder() {
         
         onChanged();
         return getMinerFieldBuilder().getBuilder();
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
-      public org.brewchain.sdk.model.Block.BlockMinerOrBuilder getMinerOrBuilder() {
+      public Block.BlockMinerOrBuilder getMinerOrBuilder() {
         if (minerBuilder_ != null) {
           return minerBuilder_.getMessageOrBuilder();
         } else {
           return miner_ == null ?
-              org.brewchain.sdk.model.Block.BlockMiner.getDefaultInstance() : miner_;
+              Block.BlockMiner.getDefaultInstance() : miner_;
         }
       }
       /**
-       * <code>.org.brewchain.sdk.model.BlockMiner miner = 3;</code>
+       * <code>.com.chain.sdk.model.BlockMiner miner = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.brewchain.sdk.model.Block.BlockMiner, org.brewchain.sdk.model.Block.BlockMiner.Builder, org.brewchain.sdk.model.Block.BlockMinerOrBuilder> 
+          Block.BlockMiner, Block.BlockMiner.Builder, Block.BlockMinerOrBuilder>
           getMinerFieldBuilder() {
         if (minerBuilder_ == null) {
           minerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.brewchain.sdk.model.Block.BlockMiner, org.brewchain.sdk.model.Block.BlockMiner.Builder, org.brewchain.sdk.model.Block.BlockMinerOrBuilder>(
+              Block.BlockMiner, Block.BlockMiner.Builder, Block.BlockMinerOrBuilder>(
                   getMiner(),
                   getParentForChildren(),
                   isClean());
@@ -1032,16 +1032,16 @@ public final class Block {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:org.brewchain.sdk.model.BlockInfo)
+      // @@protoc_insertion_point(builder_scope:com.chain.sdk.model.BlockInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:org.brewchain.sdk.model.BlockInfo)
-    private static final org.brewchain.sdk.model.Block.BlockInfo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.chain.sdk.model.BlockInfo)
+    private static final Block.BlockInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.brewchain.sdk.model.Block.BlockInfo();
+      DEFAULT_INSTANCE = new Block.BlockInfo();
     }
 
-    public static org.brewchain.sdk.model.Block.BlockInfo getDefaultInstance() {
+    public static Block.BlockInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1066,14 +1066,14 @@ public final class Block {
     }
 
     @java.lang.Override
-    public org.brewchain.sdk.model.Block.BlockInfo getDefaultInstanceForType() {
+    public Block.BlockInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface BlockHeaderOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:org.brewchain.sdk.model.BlockHeader)
+      // @@protoc_insertion_point(interface_extends:com.chain.sdk.model.BlockHeader)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1158,11 +1158,11 @@ public final class Block {
     com.google.protobuf.ByteString getEvfsRoot();
   }
   /**
-   * Protobuf type {@code org.brewchain.sdk.model.BlockHeader}
+   * Protobuf type {@code com.chain.sdk.model.BlockHeader}
    */
   public  static final class BlockHeader extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:org.brewchain.sdk.model.BlockHeader)
+      // @@protoc_insertion_point(message_implements:com.chain.sdk.model.BlockHeader)
       BlockHeaderOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use BlockHeader.newBuilder() to construct.
@@ -1320,15 +1320,15 @@ public final class Block {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockHeader_descriptor;
+      return Block.internal_static_com_chain_sdk_model_BlockHeader_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockHeader_fieldAccessorTable
+      return Block.internal_static_com_chain_sdk_model_BlockHeader_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.brewchain.sdk.model.Block.BlockHeader.class, org.brewchain.sdk.model.Block.BlockHeader.Builder.class);
+              Block.BlockHeader.class, Block.BlockHeader.Builder.class);
     }
 
     private int bitField0_;
@@ -1620,10 +1620,10 @@ public final class Block {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.brewchain.sdk.model.Block.BlockHeader)) {
+      if (!(obj instanceof Block.BlockHeader)) {
         return super.equals(obj);
       }
-      org.brewchain.sdk.model.Block.BlockHeader other = (org.brewchain.sdk.model.Block.BlockHeader) obj;
+      Block.BlockHeader other = (Block.BlockHeader) obj;
 
       boolean result = true;
       result = result && getHash()
@@ -1702,69 +1702,69 @@ public final class Block {
       return hash;
     }
 
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(byte[] data)
+    public static Block.BlockHeader parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(java.io.InputStream input)
+    public static Block.BlockHeader parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseDelimitedFrom(java.io.InputStream input)
+    public static Block.BlockHeader parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseDelimitedFrom(
+    public static Block.BlockHeader parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockHeader parseFrom(
+    public static Block.BlockHeader parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1777,7 +1777,7 @@ public final class Block {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.brewchain.sdk.model.Block.BlockHeader prototype) {
+    public static Builder newBuilder(Block.BlockHeader prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1793,26 +1793,26 @@ public final class Block {
       return builder;
     }
     /**
-     * Protobuf type {@code org.brewchain.sdk.model.BlockHeader}
+     * Protobuf type {@code com.chain.sdk.model.BlockHeader}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:org.brewchain.sdk.model.BlockHeader)
-        org.brewchain.sdk.model.Block.BlockHeaderOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.chain.sdk.model.BlockHeader)
+        Block.BlockHeaderOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockHeader_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockHeader_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockHeader_fieldAccessorTable
+        return Block.internal_static_com_chain_sdk_model_BlockHeader_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.brewchain.sdk.model.Block.BlockHeader.class, org.brewchain.sdk.model.Block.BlockHeader.Builder.class);
+                Block.BlockHeader.class, Block.BlockHeader.Builder.class);
       }
 
-      // Construct using org.brewchain.sdk.model.Block.BlockHeader.newBuilder()
+      // Construct using com.chain.sdk.model.Block.BlockHeader.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1862,17 +1862,17 @@ public final class Block {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockHeader_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockHeader_descriptor;
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockHeader getDefaultInstanceForType() {
-        return org.brewchain.sdk.model.Block.BlockHeader.getDefaultInstance();
+      public Block.BlockHeader getDefaultInstanceForType() {
+        return Block.BlockHeader.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockHeader build() {
-        org.brewchain.sdk.model.Block.BlockHeader result = buildPartial();
+      public Block.BlockHeader build() {
+        Block.BlockHeader result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1880,8 +1880,8 @@ public final class Block {
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockHeader buildPartial() {
-        org.brewchain.sdk.model.Block.BlockHeader result = new org.brewchain.sdk.model.Block.BlockHeader(this);
+      public Block.BlockHeader buildPartial() {
+        Block.BlockHeader result = new Block.BlockHeader(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.hash_ = hash_;
@@ -1944,16 +1944,16 @@ public final class Block {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.brewchain.sdk.model.Block.BlockHeader) {
-          return mergeFrom((org.brewchain.sdk.model.Block.BlockHeader)other);
+        if (other instanceof Block.BlockHeader) {
+          return mergeFrom((Block.BlockHeader)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.brewchain.sdk.model.Block.BlockHeader other) {
-        if (other == org.brewchain.sdk.model.Block.BlockHeader.getDefaultInstance()) return this;
+      public Builder mergeFrom(Block.BlockHeader other) {
+        if (other == Block.BlockHeader.getDefaultInstance()) return this;
         if (other.getHash() != com.google.protobuf.ByteString.EMPTY) {
           setHash(other.getHash());
         }
@@ -2022,11 +2022,11 @@ public final class Block {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.brewchain.sdk.model.Block.BlockHeader parsedMessage = null;
+        Block.BlockHeader parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.brewchain.sdk.model.Block.BlockHeader) e.getUnfinishedMessage();
+          parsedMessage = (Block.BlockHeader) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2491,16 +2491,16 @@ public final class Block {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:org.brewchain.sdk.model.BlockHeader)
+      // @@protoc_insertion_point(builder_scope:com.chain.sdk.model.BlockHeader)
     }
 
-    // @@protoc_insertion_point(class_scope:org.brewchain.sdk.model.BlockHeader)
-    private static final org.brewchain.sdk.model.Block.BlockHeader DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.chain.sdk.model.BlockHeader)
+    private static final Block.BlockHeader DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.brewchain.sdk.model.Block.BlockHeader();
+      DEFAULT_INSTANCE = new Block.BlockHeader();
     }
 
-    public static org.brewchain.sdk.model.Block.BlockHeader getDefaultInstance() {
+    public static Block.BlockHeader getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2525,46 +2525,46 @@ public final class Block {
     }
 
     @java.lang.Override
-    public org.brewchain.sdk.model.Block.BlockHeader getDefaultInstanceForType() {
+    public Block.BlockHeader getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface BlockBodyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:org.brewchain.sdk.model.BlockBody)
+      // @@protoc_insertion_point(interface_extends:com.chain.sdk.model.BlockBody)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    java.util.List<org.brewchain.sdk.model.Transaction.TransactionInfo> 
+    java.util.List<Transaction.TransactionInfo>
         getTxsList();
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    org.brewchain.sdk.model.Transaction.TransactionInfo getTxs(int index);
+    Transaction.TransactionInfo getTxs(int index);
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
     int getTxsCount();
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    java.util.List<? extends org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder> 
+    java.util.List<? extends Transaction.TransactionInfoOrBuilder>
         getTxsOrBuilderList();
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder getTxsOrBuilder(
+    Transaction.TransactionInfoOrBuilder getTxsOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code org.brewchain.sdk.model.BlockBody}
+   * Protobuf type {@code com.chain.sdk.model.BlockBody}
    */
   public  static final class BlockBody extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:org.brewchain.sdk.model.BlockBody)
+      // @@protoc_insertion_point(message_implements:com.chain.sdk.model.BlockBody)
       BlockBodyOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use BlockBody.newBuilder() to construct.
@@ -2601,11 +2601,11 @@ public final class Block {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                txs_ = new java.util.ArrayList<org.brewchain.sdk.model.Transaction.TransactionInfo>();
+                txs_ = new java.util.ArrayList<Transaction.TransactionInfo>();
                 mutable_bitField0_ |= 0x00000001;
               }
               txs_.add(
-                  input.readMessage(org.brewchain.sdk.model.Transaction.TransactionInfo.parser(), extensionRegistry));
+                  input.readMessage(Transaction.TransactionInfo.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -2632,48 +2632,48 @@ public final class Block {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockBody_descriptor;
+      return Block.internal_static_com_chain_sdk_model_BlockBody_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockBody_fieldAccessorTable
+      return Block.internal_static_com_chain_sdk_model_BlockBody_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.brewchain.sdk.model.Block.BlockBody.class, org.brewchain.sdk.model.Block.BlockBody.Builder.class);
+              Block.BlockBody.class, Block.BlockBody.Builder.class);
     }
 
     public static final int TXS_FIELD_NUMBER = 1;
-    private java.util.List<org.brewchain.sdk.model.Transaction.TransactionInfo> txs_;
+    private java.util.List<Transaction.TransactionInfo> txs_;
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    public java.util.List<org.brewchain.sdk.model.Transaction.TransactionInfo> getTxsList() {
+    public java.util.List<Transaction.TransactionInfo> getTxsList() {
       return txs_;
     }
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    public java.util.List<? extends org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder> 
+    public java.util.List<? extends Transaction.TransactionInfoOrBuilder>
         getTxsOrBuilderList() {
       return txs_;
     }
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
     public int getTxsCount() {
       return txs_.size();
     }
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    public org.brewchain.sdk.model.Transaction.TransactionInfo getTxs(int index) {
+    public Transaction.TransactionInfo getTxs(int index) {
       return txs_.get(index);
     }
     /**
-     * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+     * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
      */
-    public org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder getTxsOrBuilder(
+    public Transaction.TransactionInfoOrBuilder getTxsOrBuilder(
         int index) {
       return txs_.get(index);
     }
@@ -2718,10 +2718,10 @@ public final class Block {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.brewchain.sdk.model.Block.BlockBody)) {
+      if (!(obj instanceof Block.BlockBody)) {
         return super.equals(obj);
       }
-      org.brewchain.sdk.model.Block.BlockBody other = (org.brewchain.sdk.model.Block.BlockBody) obj;
+      Block.BlockBody other = (Block.BlockBody) obj;
 
       boolean result = true;
       result = result && getTxsList()
@@ -2746,69 +2746,69 @@ public final class Block {
       return hash;
     }
 
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(byte[] data)
+    public static Block.BlockBody parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(java.io.InputStream input)
+    public static Block.BlockBody parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseDelimitedFrom(java.io.InputStream input)
+    public static Block.BlockBody parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseDelimitedFrom(
+    public static Block.BlockBody parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockBody parseFrom(
+    public static Block.BlockBody parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2821,7 +2821,7 @@ public final class Block {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.brewchain.sdk.model.Block.BlockBody prototype) {
+    public static Builder newBuilder(Block.BlockBody prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2837,26 +2837,26 @@ public final class Block {
       return builder;
     }
     /**
-     * Protobuf type {@code org.brewchain.sdk.model.BlockBody}
+     * Protobuf type {@code com.chain.sdk.model.BlockBody}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:org.brewchain.sdk.model.BlockBody)
-        org.brewchain.sdk.model.Block.BlockBodyOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.chain.sdk.model.BlockBody)
+        Block.BlockBodyOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockBody_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockBody_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockBody_fieldAccessorTable
+        return Block.internal_static_com_chain_sdk_model_BlockBody_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.brewchain.sdk.model.Block.BlockBody.class, org.brewchain.sdk.model.Block.BlockBody.Builder.class);
+                Block.BlockBody.class, Block.BlockBody.Builder.class);
       }
 
-      // Construct using org.brewchain.sdk.model.Block.BlockBody.newBuilder()
+      // Construct using com.chain.sdk.model.Block.BlockBody.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2887,17 +2887,17 @@ public final class Block {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockBody_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockBody_descriptor;
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockBody getDefaultInstanceForType() {
-        return org.brewchain.sdk.model.Block.BlockBody.getDefaultInstance();
+      public Block.BlockBody getDefaultInstanceForType() {
+        return Block.BlockBody.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockBody build() {
-        org.brewchain.sdk.model.Block.BlockBody result = buildPartial();
+      public Block.BlockBody build() {
+        Block.BlockBody result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2905,8 +2905,8 @@ public final class Block {
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockBody buildPartial() {
-        org.brewchain.sdk.model.Block.BlockBody result = new org.brewchain.sdk.model.Block.BlockBody(this);
+      public Block.BlockBody buildPartial() {
+        Block.BlockBody result = new Block.BlockBody(this);
         int from_bitField0_ = bitField0_;
         if (txsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2955,16 +2955,16 @@ public final class Block {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.brewchain.sdk.model.Block.BlockBody) {
-          return mergeFrom((org.brewchain.sdk.model.Block.BlockBody)other);
+        if (other instanceof Block.BlockBody) {
+          return mergeFrom((Block.BlockBody)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.brewchain.sdk.model.Block.BlockBody other) {
-        if (other == org.brewchain.sdk.model.Block.BlockBody.getDefaultInstance()) return this;
+      public Builder mergeFrom(Block.BlockBody other) {
+        if (other == Block.BlockBody.getDefaultInstance()) return this;
         if (txsBuilder_ == null) {
           if (!other.txs_.isEmpty()) {
             if (txs_.isEmpty()) {
@@ -3006,11 +3006,11 @@ public final class Block {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.brewchain.sdk.model.Block.BlockBody parsedMessage = null;
+        Block.BlockBody parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.brewchain.sdk.model.Block.BlockBody) e.getUnfinishedMessage();
+          parsedMessage = (Block.BlockBody) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3021,22 +3021,22 @@ public final class Block {
       }
       private int bitField0_;
 
-      private java.util.List<org.brewchain.sdk.model.Transaction.TransactionInfo> txs_ =
+      private java.util.List<Transaction.TransactionInfo> txs_ =
         java.util.Collections.emptyList();
       private void ensureTxsIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          txs_ = new java.util.ArrayList<org.brewchain.sdk.model.Transaction.TransactionInfo>(txs_);
+          txs_ = new java.util.ArrayList<Transaction.TransactionInfo>(txs_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          org.brewchain.sdk.model.Transaction.TransactionInfo, org.brewchain.sdk.model.Transaction.TransactionInfo.Builder, org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder> txsBuilder_;
+          Transaction.TransactionInfo, Transaction.TransactionInfo.Builder, Transaction.TransactionInfoOrBuilder> txsBuilder_;
 
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public java.util.List<org.brewchain.sdk.model.Transaction.TransactionInfo> getTxsList() {
+      public java.util.List<Transaction.TransactionInfo> getTxsList() {
         if (txsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(txs_);
         } else {
@@ -3044,7 +3044,7 @@ public final class Block {
         }
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public int getTxsCount() {
         if (txsBuilder_ == null) {
@@ -3054,9 +3054,9 @@ public final class Block {
         }
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public org.brewchain.sdk.model.Transaction.TransactionInfo getTxs(int index) {
+      public Transaction.TransactionInfo getTxs(int index) {
         if (txsBuilder_ == null) {
           return txs_.get(index);
         } else {
@@ -3064,10 +3064,10 @@ public final class Block {
         }
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder setTxs(
-          int index, org.brewchain.sdk.model.Transaction.TransactionInfo value) {
+          int index, Transaction.TransactionInfo value) {
         if (txsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3081,10 +3081,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder setTxs(
-          int index, org.brewchain.sdk.model.Transaction.TransactionInfo.Builder builderForValue) {
+          int index, Transaction.TransactionInfo.Builder builderForValue) {
         if (txsBuilder_ == null) {
           ensureTxsIsMutable();
           txs_.set(index, builderForValue.build());
@@ -3095,9 +3095,9 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public Builder addTxs(org.brewchain.sdk.model.Transaction.TransactionInfo value) {
+      public Builder addTxs(Transaction.TransactionInfo value) {
         if (txsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3111,10 +3111,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder addTxs(
-          int index, org.brewchain.sdk.model.Transaction.TransactionInfo value) {
+          int index, Transaction.TransactionInfo value) {
         if (txsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3128,10 +3128,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder addTxs(
-          org.brewchain.sdk.model.Transaction.TransactionInfo.Builder builderForValue) {
+          Transaction.TransactionInfo.Builder builderForValue) {
         if (txsBuilder_ == null) {
           ensureTxsIsMutable();
           txs_.add(builderForValue.build());
@@ -3142,10 +3142,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder addTxs(
-          int index, org.brewchain.sdk.model.Transaction.TransactionInfo.Builder builderForValue) {
+          int index, Transaction.TransactionInfo.Builder builderForValue) {
         if (txsBuilder_ == null) {
           ensureTxsIsMutable();
           txs_.add(index, builderForValue.build());
@@ -3156,10 +3156,10 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder addAllTxs(
-          java.lang.Iterable<? extends org.brewchain.sdk.model.Transaction.TransactionInfo> values) {
+          java.lang.Iterable<? extends Transaction.TransactionInfo> values) {
         if (txsBuilder_ == null) {
           ensureTxsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -3171,7 +3171,7 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder clearTxs() {
         if (txsBuilder_ == null) {
@@ -3184,7 +3184,7 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
       public Builder removeTxs(int index) {
         if (txsBuilder_ == null) {
@@ -3197,16 +3197,16 @@ public final class Block {
         return this;
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public org.brewchain.sdk.model.Transaction.TransactionInfo.Builder getTxsBuilder(
+      public Transaction.TransactionInfo.Builder getTxsBuilder(
           int index) {
         return getTxsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder getTxsOrBuilder(
+      public Transaction.TransactionInfoOrBuilder getTxsOrBuilder(
           int index) {
         if (txsBuilder_ == null) {
           return txs_.get(index);  } else {
@@ -3214,9 +3214,9 @@ public final class Block {
         }
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public java.util.List<? extends org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder> 
+      public java.util.List<? extends Transaction.TransactionInfoOrBuilder>
            getTxsOrBuilderList() {
         if (txsBuilder_ != null) {
           return txsBuilder_.getMessageOrBuilderList();
@@ -3225,33 +3225,33 @@ public final class Block {
         }
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public org.brewchain.sdk.model.Transaction.TransactionInfo.Builder addTxsBuilder() {
+      public Transaction.TransactionInfo.Builder addTxsBuilder() {
         return getTxsFieldBuilder().addBuilder(
-            org.brewchain.sdk.model.Transaction.TransactionInfo.getDefaultInstance());
+            Transaction.TransactionInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public org.brewchain.sdk.model.Transaction.TransactionInfo.Builder addTxsBuilder(
+      public Transaction.TransactionInfo.Builder addTxsBuilder(
           int index) {
         return getTxsFieldBuilder().addBuilder(
-            index, org.brewchain.sdk.model.Transaction.TransactionInfo.getDefaultInstance());
+            index, Transaction.TransactionInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .org.brewchain.sdk.model.TransactionInfo txs = 1;</code>
+       * <code>repeated .com.chain.sdk.model.TransactionInfo txs = 1;</code>
        */
-      public java.util.List<org.brewchain.sdk.model.Transaction.TransactionInfo.Builder> 
+      public java.util.List<Transaction.TransactionInfo.Builder>
            getTxsBuilderList() {
         return getTxsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          org.brewchain.sdk.model.Transaction.TransactionInfo, org.brewchain.sdk.model.Transaction.TransactionInfo.Builder, org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder> 
+          Transaction.TransactionInfo, Transaction.TransactionInfo.Builder, Transaction.TransactionInfoOrBuilder>
           getTxsFieldBuilder() {
         if (txsBuilder_ == null) {
           txsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              org.brewchain.sdk.model.Transaction.TransactionInfo, org.brewchain.sdk.model.Transaction.TransactionInfo.Builder, org.brewchain.sdk.model.Transaction.TransactionInfoOrBuilder>(
+              Transaction.TransactionInfo, Transaction.TransactionInfo.Builder, Transaction.TransactionInfoOrBuilder>(
                   txs_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -3273,16 +3273,16 @@ public final class Block {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:org.brewchain.sdk.model.BlockBody)
+      // @@protoc_insertion_point(builder_scope:com.chain.sdk.model.BlockBody)
     }
 
-    // @@protoc_insertion_point(class_scope:org.brewchain.sdk.model.BlockBody)
-    private static final org.brewchain.sdk.model.Block.BlockBody DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.chain.sdk.model.BlockBody)
+    private static final Block.BlockBody DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.brewchain.sdk.model.Block.BlockBody();
+      DEFAULT_INSTANCE = new Block.BlockBody();
     }
 
-    public static org.brewchain.sdk.model.Block.BlockBody getDefaultInstance() {
+    public static Block.BlockBody getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3307,14 +3307,14 @@ public final class Block {
     }
 
     @java.lang.Override
-    public org.brewchain.sdk.model.Block.BlockBody getDefaultInstanceForType() {
+    public Block.BlockBody getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface BlockMinerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:org.brewchain.sdk.model.BlockMiner)
+      // @@protoc_insertion_point(interface_extends:com.chain.sdk.model.BlockMiner)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3358,11 +3358,11 @@ public final class Block {
         getBitsBytes();
   }
   /**
-   * Protobuf type {@code org.brewchain.sdk.model.BlockMiner}
+   * Protobuf type {@code com.chain.sdk.model.BlockMiner}
    */
   public  static final class BlockMiner extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:org.brewchain.sdk.model.BlockMiner)
+      // @@protoc_insertion_point(message_implements:com.chain.sdk.model.BlockMiner)
       BlockMinerOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use BlockMiner.newBuilder() to construct.
@@ -3450,15 +3450,15 @@ public final class Block {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockMiner_descriptor;
+      return Block.internal_static_com_chain_sdk_model_BlockMiner_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockMiner_fieldAccessorTable
+      return Block.internal_static_com_chain_sdk_model_BlockMiner_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.brewchain.sdk.model.Block.BlockMiner.class, org.brewchain.sdk.model.Block.BlockMiner.Builder.class);
+              Block.BlockMiner.class, Block.BlockMiner.Builder.class);
     }
 
     public static final int ADDRESS_FIELD_NUMBER = 1;
@@ -3646,10 +3646,10 @@ public final class Block {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.brewchain.sdk.model.Block.BlockMiner)) {
+      if (!(obj instanceof Block.BlockMiner)) {
         return super.equals(obj);
       }
-      org.brewchain.sdk.model.Block.BlockMiner other = (org.brewchain.sdk.model.Block.BlockMiner) obj;
+      Block.BlockMiner other = (Block.BlockMiner) obj;
 
       boolean result = true;
       result = result && getAddress()
@@ -3688,69 +3688,69 @@ public final class Block {
       return hash;
     }
 
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(byte[] data)
+    public static Block.BlockMiner parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(java.io.InputStream input)
+    public static Block.BlockMiner parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseDelimitedFrom(java.io.InputStream input)
+    public static Block.BlockMiner parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseDelimitedFrom(
+    public static Block.BlockMiner parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.brewchain.sdk.model.Block.BlockMiner parseFrom(
+    public static Block.BlockMiner parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3763,7 +3763,7 @@ public final class Block {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.brewchain.sdk.model.Block.BlockMiner prototype) {
+    public static Builder newBuilder(Block.BlockMiner prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3779,26 +3779,26 @@ public final class Block {
       return builder;
     }
     /**
-     * Protobuf type {@code org.brewchain.sdk.model.BlockMiner}
+     * Protobuf type {@code com.chain.sdk.model.BlockMiner}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:org.brewchain.sdk.model.BlockMiner)
-        org.brewchain.sdk.model.Block.BlockMinerOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.chain.sdk.model.BlockMiner)
+        Block.BlockMinerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockMiner_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockMiner_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockMiner_fieldAccessorTable
+        return Block.internal_static_com_chain_sdk_model_BlockMiner_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.brewchain.sdk.model.Block.BlockMiner.class, org.brewchain.sdk.model.Block.BlockMiner.Builder.class);
+                Block.BlockMiner.class, Block.BlockMiner.Builder.class);
       }
 
-      // Construct using org.brewchain.sdk.model.Block.BlockMiner.newBuilder()
+      // Construct using com.chain.sdk.model.Block.BlockMiner.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3832,17 +3832,17 @@ public final class Block {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.brewchain.sdk.model.Block.internal_static_org_brewchain_sdk_model_BlockMiner_descriptor;
+        return Block.internal_static_com_chain_sdk_model_BlockMiner_descriptor;
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockMiner getDefaultInstanceForType() {
-        return org.brewchain.sdk.model.Block.BlockMiner.getDefaultInstance();
+      public Block.BlockMiner getDefaultInstanceForType() {
+        return Block.BlockMiner.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockMiner build() {
-        org.brewchain.sdk.model.Block.BlockMiner result = buildPartial();
+      public Block.BlockMiner build() {
+        Block.BlockMiner result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3850,8 +3850,8 @@ public final class Block {
       }
 
       @java.lang.Override
-      public org.brewchain.sdk.model.Block.BlockMiner buildPartial() {
-        org.brewchain.sdk.model.Block.BlockMiner result = new org.brewchain.sdk.model.Block.BlockMiner(this);
+      public Block.BlockMiner buildPartial() {
+        Block.BlockMiner result = new Block.BlockMiner(this);
         result.address_ = address_;
         result.reward_ = reward_;
         result.nid_ = nid_;
@@ -3895,16 +3895,16 @@ public final class Block {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.brewchain.sdk.model.Block.BlockMiner) {
-          return mergeFrom((org.brewchain.sdk.model.Block.BlockMiner)other);
+        if (other instanceof Block.BlockMiner) {
+          return mergeFrom((Block.BlockMiner)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.brewchain.sdk.model.Block.BlockMiner other) {
-        if (other == org.brewchain.sdk.model.Block.BlockMiner.getDefaultInstance()) return this;
+      public Builder mergeFrom(Block.BlockMiner other) {
+        if (other == Block.BlockMiner.getDefaultInstance()) return this;
         if (other.getAddress() != com.google.protobuf.ByteString.EMPTY) {
           setAddress(other.getAddress());
         }
@@ -3938,11 +3938,11 @@ public final class Block {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.brewchain.sdk.model.Block.BlockMiner parsedMessage = null;
+        Block.BlockMiner parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.brewchain.sdk.model.Block.BlockMiner) e.getUnfinishedMessage();
+          parsedMessage = (Block.BlockMiner) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4229,16 +4229,16 @@ public final class Block {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:org.brewchain.sdk.model.BlockMiner)
+      // @@protoc_insertion_point(builder_scope:com.chain.sdk.model.BlockMiner)
     }
 
-    // @@protoc_insertion_point(class_scope:org.brewchain.sdk.model.BlockMiner)
-    private static final org.brewchain.sdk.model.Block.BlockMiner DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.chain.sdk.model.BlockMiner)
+    private static final Block.BlockMiner DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.brewchain.sdk.model.Block.BlockMiner();
+      DEFAULT_INSTANCE = new Block.BlockMiner();
     }
 
-    public static org.brewchain.sdk.model.Block.BlockMiner getDefaultInstance() {
+    public static Block.BlockMiner getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4263,32 +4263,32 @@ public final class Block {
     }
 
     @java.lang.Override
-    public org.brewchain.sdk.model.Block.BlockMiner getDefaultInstanceForType() {
+    public Block.BlockMiner getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_brewchain_sdk_model_BlockInfo_descriptor;
+    internal_static_com_chain_sdk_model_BlockInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_brewchain_sdk_model_BlockInfo_fieldAccessorTable;
+      internal_static_com_chain_sdk_model_BlockInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_brewchain_sdk_model_BlockHeader_descriptor;
+    internal_static_com_chain_sdk_model_BlockHeader_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_brewchain_sdk_model_BlockHeader_fieldAccessorTable;
+      internal_static_com_chain_sdk_model_BlockHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_brewchain_sdk_model_BlockBody_descriptor;
+    internal_static_com_chain_sdk_model_BlockBody_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_brewchain_sdk_model_BlockBody_fieldAccessorTable;
+      internal_static_com_chain_sdk_model_BlockBody_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_brewchain_sdk_model_BlockMiner_descriptor;
+    internal_static_com_chain_sdk_model_BlockMiner_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_brewchain_sdk_model_BlockMiner_fieldAccessorTable;
+      internal_static_com_chain_sdk_model_BlockMiner_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4298,24 +4298,23 @@ public final class Block {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013block.proto\022\027org.brewchain.sdk.model\032\021" +
-      "transaction.proto\"\270\001\n\tBlockInfo\0224\n\006heade" +
-      "r\030\001 \001(\0132$.org.brewchain.sdk.model.BlockH" +
-      "eader\0220\n\004body\030\002 \001(\0132\".org.brewchain.sdk." +
-      "model.BlockBody\0222\n\005miner\030\003 \001(\0132#.org.bre" +
-      "wchain.sdk.model.BlockMiner\022\017\n\007version\030\004" +
-      " \001(\005\"\220\002\n\013BlockHeader\022\014\n\004hash\030\001 \001(\014\022\022\n\npa" +
-      "rentHash\030\002 \001(\014\022\016\n\006height\030\003 \001(\003\022\021\n\tstateR" +
-      "oot\030\004 \001(\014\022\023\n\013receiptRoot\030\005 \001(\014\022\021\n\ttimest" +
-      "amp\030\006 \001(\003\022\021\n\textraData\030\007 \001(\014\022\017\n\007txHashs\030" +
-      "\010 \003(\014\022\027\n\017txexecbulkindex\030\t \003(\005\022\026\n\016txexec" +
-      "bulksize\030\n \001(\005\022\026\n\016totaltriecount\030\013 \001(\003\022\025" +
-      "\n\rtotaltriesize\030\014 \001(\003\022\020\n\010evfsRoot\030\r \001(\014\"" +
-      "B\n\tBlockBody\0225\n\003txs\030\001 \003(\0132(.org.brewchai" +
-      "n.sdk.model.TransactionInfo\"V\n\nBlockMine" +
-      "r\022\017\n\007address\030\001 \001(\014\022\016\n\006reward\030\002 \001(\014\022\013\n\003ni" +
-      "d\030\003 \001(\t\022\014\n\004term\030\004 \001(\t\022\014\n\004bits\030\005 \001(\tb\006pro" +
-      "to3"
+      "\n\013block.proto\022\023com.chain.sdk.model\032\021tran" +
+      "saction.proto\"\254\001\n\tBlockInfo\0220\n\006header\030\001 " +
+      "\001(\0132 .com.chain.sdk.model.BlockHeader\022,\n" +
+      "\004body\030\002 \001(\0132\036.com.chain.sdk.model.BlockB" +
+      "ody\022.\n\005miner\030\003 \001(\0132\037.com.chain.sdk.model" +
+      ".BlockMiner\022\017\n\007version\030\004 \001(\005\"\220\002\n\013BlockHe" +
+      "ader\022\014\n\004hash\030\001 \001(\014\022\022\n\nparentHash\030\002 \001(\014\022\016" +
+      "\n\006height\030\003 \001(\003\022\021\n\tstateRoot\030\004 \001(\014\022\023\n\013rec" +
+      "eiptRoot\030\005 \001(\014\022\021\n\ttimestamp\030\006 \001(\003\022\021\n\text" +
+      "raData\030\007 \001(\014\022\017\n\007txHashs\030\010 \003(\014\022\027\n\017txexecb" +
+      "ulkindex\030\t \003(\005\022\026\n\016txexecbulksize\030\n \001(\005\022\026" +
+      "\n\016totaltriecount\030\013 \001(\003\022\025\n\rtotaltriesize\030" +
+      "\014 \001(\003\022\020\n\010evfsRoot\030\r \001(\014\">\n\tBlockBody\0221\n\003" +
+      "txs\030\001 \003(\0132$.com.chain.sdk.model.Transact" +
+      "ionInfo\"V\n\nBlockMiner\022\017\n\007address\030\001 \001(\014\022\016" +
+      "\n\006reward\030\002 \001(\014\022\013\n\003nid\030\003 \001(\t\022\014\n\004term\030\004 \001(" +
+      "\t\022\014\n\004bits\030\005 \001(\tb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4328,33 +4327,33 @@ public final class Block {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          org.brewchain.sdk.model.Transaction.getDescriptor(),
+          Transaction.getDescriptor(),
         }, assigner);
-    internal_static_org_brewchain_sdk_model_BlockInfo_descriptor =
+    internal_static_com_chain_sdk_model_BlockInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_org_brewchain_sdk_model_BlockInfo_fieldAccessorTable = new
+    internal_static_com_chain_sdk_model_BlockInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_brewchain_sdk_model_BlockInfo_descriptor,
+        internal_static_com_chain_sdk_model_BlockInfo_descriptor,
         new java.lang.String[] { "Header", "Body", "Miner", "Version", });
-    internal_static_org_brewchain_sdk_model_BlockHeader_descriptor =
+    internal_static_com_chain_sdk_model_BlockHeader_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_org_brewchain_sdk_model_BlockHeader_fieldAccessorTable = new
+    internal_static_com_chain_sdk_model_BlockHeader_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_brewchain_sdk_model_BlockHeader_descriptor,
+        internal_static_com_chain_sdk_model_BlockHeader_descriptor,
         new java.lang.String[] { "Hash", "ParentHash", "Height", "StateRoot", "ReceiptRoot", "Timestamp", "ExtraData", "TxHashs", "Txexecbulkindex", "Txexecbulksize", "Totaltriecount", "Totaltriesize", "EvfsRoot", });
-    internal_static_org_brewchain_sdk_model_BlockBody_descriptor =
+    internal_static_com_chain_sdk_model_BlockBody_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_org_brewchain_sdk_model_BlockBody_fieldAccessorTable = new
+    internal_static_com_chain_sdk_model_BlockBody_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_brewchain_sdk_model_BlockBody_descriptor,
+        internal_static_com_chain_sdk_model_BlockBody_descriptor,
         new java.lang.String[] { "Txs", });
-    internal_static_org_brewchain_sdk_model_BlockMiner_descriptor =
+    internal_static_com_chain_sdk_model_BlockMiner_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_org_brewchain_sdk_model_BlockMiner_fieldAccessorTable = new
+    internal_static_com_chain_sdk_model_BlockMiner_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_brewchain_sdk_model_BlockMiner_descriptor,
+        internal_static_com_chain_sdk_model_BlockMiner_descriptor,
         new java.lang.String[] { "Address", "Reward", "Nid", "Term", "Bits", });
-    org.brewchain.sdk.model.Transaction.getDescriptor();
+    Transaction.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

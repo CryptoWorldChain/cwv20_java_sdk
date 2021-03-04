@@ -53,11 +53,7 @@ public class CryptoUtil {
     }
 
     public static byte[] sign(String privateKey,byte[] contentBytes){
-        try{
-            return crypto.sign(Hex.decode(privateKey),contentBytes);
-        } catch (StringIndexOutOfBoundsException e) {
-            return crypto.sign(Hex.decode(privateKey),contentBytes);
-        }
+        return crypto.sign(Hex.decode(privateKey),contentBytes);
     }
     public static String signHex(String privateKey,byte[] contentBytes){
         return bytesToHexStr(sign(privateKey,contentBytes));
@@ -76,12 +72,7 @@ public class CryptoUtil {
     }
 
     public static KeyPairs getRandomKP(){
-        try{
-            return crypto.genAccountKey();
-        } catch (StringIndexOutOfBoundsException e) {
-            return getRandomKP();
-        }
-
+        return crypto.genAccountKey();
     }
 
 
@@ -103,7 +94,6 @@ public class CryptoUtil {
         System.out.println("address="+keyPairs.getAddress());
         String address = crypto.privatekeyToAccountKey(Hex.decode(keyPairs.getPrikey())).getAddress();
         System.out.println("address="+address);
-        String sign = CryptoUtil.bytesToHexStr(CryptoUtil.sign("79211e47216f5c13c85650fac839078ad6ae2dc074ca4bd1e7817fbdfe8f6e51","c8f35bd68f817dc5f2e58df0bec8c6c46d80cf0557e6d2257db758903ecc40d2".getBytes()));
-        System.out.print("sign:"+sign);
+
     }
 }
