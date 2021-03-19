@@ -16,7 +16,6 @@ $projectDir
 gradle/
 gradlew
 gradlew.bat
-lib/
 .classpath
 forsage.md
 build.gradle

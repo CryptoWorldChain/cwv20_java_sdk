@@ -1,11 +1,11 @@
 package org.brewchain.core.crypto.cwv.keystore;
 
 import com.brewchain.sdk.crypto.ICryptoHandler;
+import com.brewchain.sdk.crypto.KeyPairs;
 import com.google.gson.Gson;
 import org.brewchain.core.crypto.cwv.keystore.KeyStore.KeyStoreValue;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreFile.CipherParams;
 import org.brewchain.core.crypto.cwv.keystore.KeyStoreFile.KeyStoreParams;
-import com.brewchain.sdk.crypto.KeyPairs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.BufferedBlockCipher;
